@@ -1,0 +1,53 @@
+.header,.nav,.banner,.main,.footer{
+    width: 960px;
+    margin: 0 auto;
+}
+.header img{
+    width: 100%;
+}
+.banner img{
+    width: 100%;
+}
+.nav{
+    background-color: #009dca;
+    height: 32px ;
+}
+.nav ul
+{
+    padding: 0;
+    margin: 0;
+}
+.nav ul li{
+    float: left;
+    list-style: none;
+}
+.nav ul li a{
+    padding: 5px 10px;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+.main-content,.blog-right{
+    float: left;
+}
+.main-content{
+    width: 70%;
+}
+.main-content .last-new-item,.main-content .list-last-new
+{
+    float: left;
+}
+.main-content .last-new-item
+{
+    width: 60%;
+}
+.main-content .last-new-item .content img{
+    float: left;
+    margin-right: 5px;
+}
+.main-content .list-last-new{
+    width: 40%;
+}
+.blog-right{
+    width: 30%;
+}
