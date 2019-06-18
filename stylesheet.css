@@ -27,6 +27,17 @@
     text-decoration: none;
     color: #fff;
 }
+.main ul{
+    padding: 0;
+    margin: 0;
+}
+.main ul li{
+    list-style: none;
+}
+.main ul li a{
+    text-decoration: none;
+    color: black;
+}
 .main-content,.blog-right{
     float: left;
 }
@@ -40,6 +51,11 @@
 .main-content .last-new-item
 {
     width: 60%;
+}
+.main-content .last-new-item .content
+{
+    text-align: justify;
+    padding-right: 10px;
 }
 .main-content .last-new-item .content img{
     float: left;
