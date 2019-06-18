@@ -9,7 +9,7 @@
     width: 100%;
 }
 .nav{
-    background-color: #009dca;
+    background:url("./images/bg/nav.jpg") repeat-x;
     height: 32px ;
 }
 .nav ul
@@ -22,10 +22,13 @@
     list-style: none;
 }
 .nav ul li a{
-    padding: 5px 10px;
+    padding: 2px 10px;
     display: block;
     text-decoration: none;
     color: #fff;
+}
+.main h3{
+    margin: 0px;
 }
 .main ul{
     padding: 0;
