@@ -27,8 +27,12 @@
     text-decoration: none;
     color: #fff;
 }
+.wrapper-main-content{
+    margin-right: 10px;
+}
 .main h3{
     margin: 0px;
+    background:url("./images/bg/nav.jpg") repeat-x;
 }
 .main ul{
     padding: 0;
