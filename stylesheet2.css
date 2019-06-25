@@ -1,0 +1,35 @@
+*{margin: 0;padding: 0;}
+.header,.nav{width:100%;margin: 0 auto;}
+.nav ul{
+    list-style: none;
+    background: steelblue;
+    text-align: center;
+}
+.nav ul li{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 150px;
+}
+.nav ul li a{
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+.nav ul li a:hover{
+    background: aquamarine;
+    color: black;
+}
+.wrapper-main-content{
+    margin-right: 10px;
+}
+.wrapper-main-content .icon-content {
+    width: 15px;
+    margin: 0 5px;
+}
+.wrapper-main-content h3{
+    margin: 0px;
+    line-height: 30px;
+    color: #fff;
+    background:url("./images/bg/nav.jpg") repeat-x;
+}
