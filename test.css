@@ -1,0 +1,100 @@
+ul,li{
+    list-style: none;
+}
+p,h1,h2,h3,h4,h5,h6,ul{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+.header,.nav,.banner,.main,.footer{
+    width: 960px;
+    margin:0 auto;
+}
+.header img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.nav{
+    height: 32px;
+    background-color: #009dca;
+}
+.nav ul li{
+    float: left;
+}
+.nav ul li a{
+    font-size: 15px;
+    padding: 5px 10px;
+    color: white;
+    display: block;
+    text-transform: uppercase;
+}
+
+.banner img{
+    width: 100%;
+}
+.main-content,.blog-right{
+    float: left;
+}
+.main-content{
+    width: 70%;
+}
+.main-content .last-new-item,.main-content .list-last-new{
+    float: left;
+}
+
+.main-content .content img{
+    float: left;
+    margin-right: 5px;
+    width: 30%;
+}
+.main-content .last-new-item .content p{
+    text-align: justify;
+    padding-right: 10px;
+}
+.last-new-item{
+    width: 60%;
+}
+.list-last-new{
+    width: 40%;
+}
+.blog-right{
+    width: 30%;
+}
+
+.blog-thanh-nien-tinh-nguyen h3 {
+    height: 30px;
+    background: red;
+    line-height: 30px;
+    color: white;
+    margin: 0;
+}
+.blog-van-hoa h3 {
+    height: 30px;
+    background: red;
+    line-height: 30px;
+    color: white;
+    margin: 0;
+    clear: both;
+}
+.blog-hoat-dong h3 {
+    height: 30px;
+    background: red;
+    line-height: 30px;
+    color: white;
+    margin: 0;
+    clear: both;
+}
+.blog-right h3{
+    height: 30px;
+    background: blue;
+    line-height: 30px;
+    color: white;
+    margin: 0;
+    clear: both;
+}
+.wrapper-content{
+    margin-right: 10px;
+}
