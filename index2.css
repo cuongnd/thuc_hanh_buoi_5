@@ -1,0 +1,28 @@
+.header, .nav, .banner, .main{
+    width: 960px;
+    margin: 0 auto;
+}
+.header img{
+    width: 100%;
+}
+.banner img{
+    width: 100%;
+}
+.nav {
+    background-color: dodgerblue;
+    height: 32px;
+}
+.nav ul{
+    padding: 0;
+    margin: 0;
+}
+.nav ul li{
+    list-style: none;
+    float: left;
+}
+.nav ul li a{
+    padding: 3px 10px;
+    font-family: Arial;
+    text-decoration: none;
+    display: block;
+}
