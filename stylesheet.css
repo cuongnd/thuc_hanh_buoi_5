@@ -156,3 +156,6 @@ page dang ky
     float: left;
     padding: 5px 10px;
 }
+.wrapper-main-content.form-dang-ky .submit-form{
+    padding: 10px;
+}

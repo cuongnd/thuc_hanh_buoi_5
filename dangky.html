@@ -37,11 +37,11 @@
         <div class="main-content">
             <div class="wrapper-main-content form-dang-ky">
                 <form method="post" action="dangky.php">
-                    <div class="item-input"><label class="input-label">Họ và tên</label><input class="input" type="text" name="full_name"></div>
-                    <div class="item-input"><label class="input-label">Ngày sinh</label><input class="input" type="text" name="ngay_sinh"></div>
-                    <div class="item-input"><label class="input-label">Email</label><input class="input" type="text" name="email"></div>
-                    <div class="item-input"><label class="input-label">Địa chỉ</label><textarea class="input" name="dia_chi"></textarea></div>
-                    <button type="button">Gửi đăng ký</button>
+                    <div class="item-input"><label class="input-label">Họ và tên</label><input class="input" type="text" id="full_name" name="full_name"></div>
+                    <div class="item-input"><label class="input-label">Ngày sinh</label><input class="input" type="text" id="ngay_sinh" name="ngay_sinh"></div>
+                    <div class="item-input"><label class="input-label">Email</label><input class="input" type="text" id="email" name="email"></div>
+                    <div class="item-input"><label class="input-label">Địa chỉ</label><textarea class="input" id="dia_chi" name="dia_chi"></textarea></div>
+                    <button class="submit-form" onclick="check_du_lieu()" type="button">Gửi đăng ký</button>
                 </form>
 
             </div>
@@ -95,3 +95,64 @@
     </footer>
 </body>
 </html>
+<script type="text/javascript">
+    function isValidDate(dateString)
+    {
+        // First check for the pattern
+        if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString))
+            return false;
+
+        // Parse the date parts to integers
+        var parts = dateString.split("/");
+        var day = parseInt(parts[1], 10);
+        var month = parseInt(parts[0], 10);
+        var year = parseInt(parts[2], 10);
+
+        // Check the ranges of month and year
+        if(year < 1000 || year > 3000 || month == 0 || month > 12)
+            return false;
+
+        var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+        // Adjust for leap years
+        if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+            monthLength[1] = 29;
+
+        // Check the range of the day
+        return day > 0 && day <= monthLength[month - 1];
+    };
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    function check_du_lieu() {
+        var full_name="",ngay_sinh="",email="",dia_chi="";
+        full_name=document.getElementById('full_name').value;
+        ngay_sinh=document.getElementById('ngay_sinh').value;
+        email=document.getElementById('email').value;
+        dia_chi=document.getElementById('dia_chi').value;
+        if(full_name==""){
+            alert("vui lòng nhập họ và tên");
+            return false;
+        }else if(ngay_sinh==""){
+            alert("Vui lòng nhập ngày sinh");
+            return false;
+        }else if(email==""){
+            alert("Vui lòng nhập địa email");
+            return false;
+        }else if(dia_chi==""){
+            alert("Vui lòng nhập địa chỉ");
+            return false;
+        }else if(!isValidDate(ngay_sinh)){
+            alert("Vui lòng kiểm tra lại ngày sinh");
+            return false;
+        }else if(!validateEmail(email)){
+            alert("Vui lòng kiểm tra lại email");
+            return  false;
+        }
+        return true;
+
+
+
+    }
+</script>
