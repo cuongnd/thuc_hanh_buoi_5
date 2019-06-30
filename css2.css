@@ -1,4 +1,4 @@
-.header,.main,.nav,.banner,.img-header,.img-banner{
+.header,.main,.nav,.banner,.img-header,.img-banner,.main1{
     width: 960px;
     margin: 0 auto;}
 ul.nav-content {
@@ -33,7 +33,7 @@ a {
 
 .thanhnien-content {
     float: left;
-    width: 70%;
+    margin-right: 15px;
 }
 
 img.anh-noidung {
@@ -43,11 +43,13 @@ img.anh-noidung {
 
 .noidung {
     text-align: justify;
+    float: left;
+    width: 70%;
 }
 h4 {
     margin: 0;
     padding: 0;
-    height: 20px;
+
     background: blue;
     color: #FFF;
     line-height: 20px;
@@ -55,8 +57,19 @@ h4 {
 .tinnong {
     float: left;
     width: 30%;
+    margin-top: -30px;
 }
 
 ul.ul-tinnong {
+    list-style: none;
+}
+.blog-right {
+    float: left;
+    width: 30%;
+}
+
+
+
+ul {
     list-style: none;
 }
