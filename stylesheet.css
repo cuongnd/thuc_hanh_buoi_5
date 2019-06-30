@@ -135,3 +135,24 @@ page hoi sinh vien
     margin: 10px;
     line-height: 32px;
 }
+/*
+page dang ky
+ */
+
+.wrapper-main-content.form-dang-ky{
+
+}
+.wrapper-main-content.form-dang-ky .item-input{
+    margin-bottom: 10px;
+    display: flex;
+}
+.wrapper-main-content.form-dang-ky .input-label{
+    width: 200px;
+    display: block;
+    float: left;
+
+}
+.wrapper-main-content.form-dang-ky .input{
+    float: left;
+    padding: 5px 10px;
+}
