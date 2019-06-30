@@ -1,4 +1,4 @@
-.header,.nav,.banner,.main,.footer, .testabc{
+.header,.nav,.banner,.main,.footer,.path-site, .testabc{
     width: 960px;
     margin: 0 auto;
 }
@@ -25,7 +25,7 @@
     position: absolute;
     width: 200px;
     background: brown;
-    top: 32px;
+    top: 28px;
     display: none;
 }
 
@@ -119,4 +119,19 @@
 }
 .blog-right{
     width: 30%;
+}
+/*
+page hoi sinh vien
+ */
+.path-site
+{
+    padding: 20px;
+}
+.path-site .icon-home{
+    width: 19px;
+
+}
+.path-site .path-item{
+    margin: 10px;
+    line-height: 32px;
 }
