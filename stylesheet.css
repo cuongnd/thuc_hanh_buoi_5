@@ -17,6 +17,39 @@
     padding: 0;
     margin: 0;
 }
+.nav ul.sub-menu{
+    display: block;
+}
+.nav ul.sub-menu
+{
+    position: absolute;
+    width: 200px;
+    background: brown;
+    top: 32px;
+    display: none;
+}
+
+.nav ul.sub-menu li{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.nav ul.sub-menu li:hover{
+    background: cadetblue;
+}
+.nav ul.ul-level-1
+{
+    position: relative;
+    padding: 4px;
+}
+
+.nav ul.ul-level-1 li.level-1:hover{
+    background-color: cadetblue;
+}
+.nav ul.ul-level-1 li.level-1:hover ul.sub-menu{
+    display: block;
+}
 .nav ul li{
     float: left;
     list-style: none;
