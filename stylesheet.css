@@ -159,3 +159,6 @@ page dang ky
 .wrapper-main-content.form-dang-ky .submit-form{
     padding: 10px;
 }
+.error{
+    border: 1px solid red;
+}
