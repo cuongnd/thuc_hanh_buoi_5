@@ -5,9 +5,69 @@
     <title>Title</title>
 </head>
 <body>
+<a href="index.html">hello</a>
 <script type="text/javascript">
-    var my_book_id=[13,36,25,52,83];
-    console.log("my_book_id",my_book_id.length);
+    function createArrayFromFunction() {
+        return Array.from(arguments);
+    }
+
+    console.log(createArrayFromFunction(1, 2, 3));
+    // (3) [1, 2, 3]
+
+    // Hoặc ta có thể tạo trực tiếp
+    console.log(Array.from([1, 2, 3]));
+    // (3) [1, 2, 3]
+
+    // Nếu muốn khi tạo mảng mới các phần tử sẽ được nhân đôi thì ta làm như sau
+    console.log(Array.from([1, 2, 3], function(elem) {
+        return elem * elem;
+    }));
+
+    console.log(Array.of(1, 2, '3'));
+    // (3) [1, 2, "3"]
+
+    /*
+    Hàm fill sẽ thay đổi tất cả phần tử của mảng trở thành giá trị nó được truyền vào, hoặc thay đổi một phần theo tham số thứ 2 và thứ 3 nhận được.
+     */
+    // Ta có mảng sau
+    const arr = ['javascript', 'ruby', 'php'];
+    // Giờ tôi muốn đổi `ruby` và `php` thành `react` thì như lúc đầu giới thiệu ta có thể đổi trực tiếp bằng cách truy cập vào phần tử và đổi giá trị nhưng nếu nhiều phần tử thì cách đó sẽ không hiệu quả, nên tôi dùng hàm fill như sau
+    console.log(arr.fill('react', 1, 3));
+    // (3) ["javascript", "react", "react"]
+
+    /*
+    Array.prototype.filter()
+Đây là cú pháp đầy đủ của hàm filter
+Array.prototype.filter(callbackFunction, thisArgument?)
+Trong trường hợp bạn muốn lọc mảng ban đầu theo một điều kiện nào đó bạn có thể sử dụng hàm filter này, nó sẽ trả ra một mảng mới với điều kiện bạn muốn lọc.
+Xem ví dụ sau
+
+
+     */
+    const arr = ['javascript', 'ruby', 'php'];
+    // Giờ nếu ta muốn mảng mới chỉ có phần tử `ruby` thì ta làm như sau
+    const newArr = arr.filter(function(elem) {
+        return elem === 'ruby';
+    });
+    console.log(newArr);
+    // ["ruby"]
+
+    /*
+    3. Array.prototype.find()
+Đây là cú pháp đầy đủ của hàm find
+Array.prototype.find(callbackFunction, thisArgument?)
+Hàm find sẽ trả về phần tử đầu tiên tìm thấy theo điều kiện được truyền vào.
+Xem ví dụ sau
+
+     */
+
+    const arr = ['javascript', 'ruby', 'php'];
+    arr.find(function(elem) {
+        return elem == 'ruby';
+    });
+    // ['ruby']
+
+
 </script>
 </body>
 </html>

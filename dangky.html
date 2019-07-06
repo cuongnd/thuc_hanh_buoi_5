@@ -36,13 +36,13 @@
     <section class="main">
         <div class="main-content">
             <div class="wrapper-main-content form-dang-ky">
-                <form method="post" action="dangky.php">
+                <form method="post" action="dangky.php" onsubmit="return check_du_lieu()">
                     <div class="item-input"><label class="input-label">Họ và tên</label><input class="input" type="text" id="full_name" name="full_name" onkeyup="check_empty(this)" ></div>
                     <div class="item-input"><label class="input-label">Giới tính</label>Nam<input type="radio" checked name="gioi_tinh" value="Nam">Nữ<input type="radio" name="gioi_tinh" value="Nữ"></div>
                     <div class="item-input"><label class="input-label">Ngày sinh</label><input class="input" type="text" id="ngay_sinh" name="ngay_sinh" onkeyup="check_empty(this)"></div>
                     <div class="item-input"><label class="input-label">Email</label><input class="input" type="text" id="email" name="email" onkeyup="check_empty(this)"></div>
                     <div class="item-input"><label class="input-label">Địa chỉ</label><textarea class="input" id="dia_chi" name="dia_chi" onkeyup="check_empty(this)"></textarea></div>
-                    <button class="submit-form" onclick="check_du_lieu()" type="button">Gửi đăng ký</button>
+                    <button class="submit-form"  type="submit">Gửi đăng ký</button>
                 </form>
 
             </div>
