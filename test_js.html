@@ -66,7 +66,74 @@ Xem ví dụ sau
         return elem == 'ruby';
     });
     // ['ruby']
+/*
+4. Array.prototype.forEach()
+Đây là cú pháp đầy đủ hàm forEach
+Array.prototype.forEach(callbackFunction, thisArgument?)
+Hàm forEach cho phép chúng ta lặp hàm callback qua từng phần tử cuả mảng.
+Chú ý là trong forEach ta không thể break out được ra ngoài mà chỉ có thể throw ra được exception nên nếu cần thiết break ta nên dùng hàm for.
+Xem ví dụ sau
+ */
+    const arr = ['javascript', 'ruby', 'php'];
+    // Giả sử giờ ta muốn các phần tử đều có thêm chữ `programing language` ta làm như sau
+    arr.forEach(function(elem) {
+        return console.log(elem + ' programing language');
+    });
+    // javascript programing language
+    // ruby programing language
+    // php programing language
 
+    /*
+    5. Array.prototype.indexOf()
+Cú pháp đầy đủ của hàm indexOf
+Array.prototype.indexOf(elementToFind, start?)
+Hàm indexOf trả về chỉ số index của phần tử được tìm thấy trong mảng theo giá trị nhận được. Nếu không tìm thấy hàm sẽ trả về -1.
+Ta còn có thể truyền vào vị trí để bắt đầu tìm kiếm bằng tham số thứ 2 của hàm.
+Xem ví dụ sau
+
+     */
+
+    const arr = ['javascript', 'ruby', 'php'];
+    // Giờ ta muốn tìm index của phần tử `ruby` trong mảng trên
+    const rubyIndex = arr.indexOf('ruby');
+    // 1
+
+    /*
+    6. Array.prototype.map()
+Đây là cú pháp đầy đủ của hàm map
+Array.prototype.map(callbackFunction, thisArgument?)
+Hàm map trả về một mảng mới sau khi chạy hàm callbackFunction với mỗi phần tử.
+Xem ví dụ sau
+
+     */
+
+    const arr = ['javascript', 'ruby', 'php'];
+
+    // Giờ ta muốn trả ra 1 mảng mới với các phần tử đều được thêm chữ `language`
+    const newArr = arr.map(function(elem) {
+        return elem + ' language';
+    });
+    // (3) ["javascript language", "ruby language", "php language"]
+    /*
+    7. Array.prototype.reduce()
+Cú pháp đầy đủ của hàm reduce
+Array.prototype.reduce(callbackFunction, initialValue?)
+Hàm reduce thực hiện callbackFunction 1 lần cho mỗi phần tử trong mảng. Sau đó sẽ tính toán, xử lý và trả về một kết quả.
+Hàm reduce sẽ không thực hiện callbackFunction với các phần tử không có giá trị.
+Hàm callback sẽ có 4 tham số previousValue, currentValue, currentIndex, arr.
+Nếu khi chạy tham số initialValue không được truyền thì previousValue sẽ bằng phần tử đầu tiên còn currentValue sẽ bằng phần tử thứ 2 của mảng.
+Xem ví dụ sau
+     */
+
+    const arr1 = [1, 20, 34, 11];
+
+    // Giờ ta muốn tính tổng của mảng trên bằng hàm reduce, ta làm như sau
+    const total = arr1.reduce(function(a, b,currentIndex, arr) {
+        console.log("currentIndex",currentIndex);
+        return a + b;
+    });
+    console.log(total);
+    // 66
 
 </script>
 </body>
