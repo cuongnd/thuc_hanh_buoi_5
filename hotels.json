@@ -1,0 +1,38 @@
+[
+  {
+    "name": "hotel1",
+    "address": "hanoi",
+    "price": 30,
+    "star": 3,
+    "description": "khach san thoang mat"
+  },
+  {
+    "name": "hotel2",
+    "address": "ninh binh",
+    "price": 40,
+    "star": 2,
+    "description": "khach san 0 thoang mat"
+  },
+  {
+    "name": "hotel3",
+    "address": "bac ninh",
+    "price": 50,
+    "star": 1,
+    "description": "khach san nong"
+  },
+  {
+    "name": "hotel4",
+    "address": "bac giang",
+    "price": 60,
+    "star": 5,
+    "description": "khach san ban"
+  },
+  {
+    "name": "hotel5",
+    "address": "quang ninh",
+    "price": 10,
+    "star": 4,
+    "description": "khach san gia re"
+  }
+
+]

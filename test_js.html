@@ -7,133 +7,50 @@
 <body>
 <a href="index.html">hello</a>
 <script type="text/javascript">
-    function createArrayFromFunction() {
-        return Array.from(arguments);
-    }
+    var my_hotel=
+        [
+            {
+                "name": "hotel1",
+                "address": "hanoi",
+                "price": 30,
+                "star": 3,
+                "description": "khach san thoang mat"
+            },
+            {
+                "name": "hotel2",
+                "address": "ninh binh",
+                "price": 40,
+                "star": 2,
+                "description": "khach san 0 thoang mat"
+            },
+            {
+                "name": "hotel3",
+                "address": "bac ninh",
+                "price": 50,
+                "star": 1,
+                "description": "khach san nong"
+            },
+            {
+                "name": "hotel4",
+                "address": "bac giang",
+                "price": 60,
+                "star": 5,
+                "description": "khach san ban"
+            },
+            {
+                "name": "hotel5",
+                "address": "quang ninh",
+                "price": 10,
+                "star": 4,
+                "description": "khach san gia re"
+            }
 
-    console.log(createArrayFromFunction(1, 2, 3));
-    // (3) [1, 2, 3]
-
-    // Hoặc ta có thể tạo trực tiếp
-    console.log(Array.from([1, 2, 3]));
-    // (3) [1, 2, 3]
-
-    // Nếu muốn khi tạo mảng mới các phần tử sẽ được nhân đôi thì ta làm như sau
-    console.log(Array.from([1, 2, 3], function(elem) {
-        return elem * elem;
-    }));
-
-    console.log(Array.of(1, 2, '3'));
-    // (3) [1, 2, "3"]
-
-    /*
-    Hàm fill sẽ thay đổi tất cả phần tử của mảng trở thành giá trị nó được truyền vào, hoặc thay đổi một phần theo tham số thứ 2 và thứ 3 nhận được.
-     */
-    // Ta có mảng sau
-    const arr = ['javascript', 'ruby', 'php'];
-    // Giờ tôi muốn đổi `ruby` và `php` thành `react` thì như lúc đầu giới thiệu ta có thể đổi trực tiếp bằng cách truy cập vào phần tử và đổi giá trị nhưng nếu nhiều phần tử thì cách đó sẽ không hiệu quả, nên tôi dùng hàm fill như sau
-    console.log(arr.fill('react', 1, 3));
-    // (3) ["javascript", "react", "react"]
-
-    /*
-    Array.prototype.filter()
-Đây là cú pháp đầy đủ của hàm filter
-Array.prototype.filter(callbackFunction, thisArgument?)
-Trong trường hợp bạn muốn lọc mảng ban đầu theo một điều kiện nào đó bạn có thể sử dụng hàm filter này, nó sẽ trả ra một mảng mới với điều kiện bạn muốn lọc.
-Xem ví dụ sau
+        ]
+    var str_obj = JSON.stringify(my_hotel);
+    console.log('str_obj',str_obj);
 
 
-     */
-    const arr = ['javascript', 'ruby', 'php'];
-    // Giờ nếu ta muốn mảng mới chỉ có phần tử `ruby` thì ta làm như sau
-    const newArr = arr.filter(function(elem) {
-        return elem === 'ruby';
-    });
-    console.log(newArr);
-    // ["ruby"]
 
-    /*
-    3. Array.prototype.find()
-Đây là cú pháp đầy đủ của hàm find
-Array.prototype.find(callbackFunction, thisArgument?)
-Hàm find sẽ trả về phần tử đầu tiên tìm thấy theo điều kiện được truyền vào.
-Xem ví dụ sau
-
-     */
-
-    const arr = ['javascript', 'ruby', 'php'];
-    arr.find(function(elem) {
-        return elem == 'ruby';
-    });
-    // ['ruby']
-/*
-4. Array.prototype.forEach()
-Đây là cú pháp đầy đủ hàm forEach
-Array.prototype.forEach(callbackFunction, thisArgument?)
-Hàm forEach cho phép chúng ta lặp hàm callback qua từng phần tử cuả mảng.
-Chú ý là trong forEach ta không thể break out được ra ngoài mà chỉ có thể throw ra được exception nên nếu cần thiết break ta nên dùng hàm for.
-Xem ví dụ sau
- */
-    const arr = ['javascript', 'ruby', 'php'];
-    // Giả sử giờ ta muốn các phần tử đều có thêm chữ `programing language` ta làm như sau
-    arr.forEach(function(elem) {
-        return console.log(elem + ' programing language');
-    });
-    // javascript programing language
-    // ruby programing language
-    // php programing language
-
-    /*
-    5. Array.prototype.indexOf()
-Cú pháp đầy đủ của hàm indexOf
-Array.prototype.indexOf(elementToFind, start?)
-Hàm indexOf trả về chỉ số index của phần tử được tìm thấy trong mảng theo giá trị nhận được. Nếu không tìm thấy hàm sẽ trả về -1.
-Ta còn có thể truyền vào vị trí để bắt đầu tìm kiếm bằng tham số thứ 2 của hàm.
-Xem ví dụ sau
-
-     */
-
-    const arr = ['javascript', 'ruby', 'php'];
-    // Giờ ta muốn tìm index của phần tử `ruby` trong mảng trên
-    const rubyIndex = arr.indexOf('ruby');
-    // 1
-
-    /*
-    6. Array.prototype.map()
-Đây là cú pháp đầy đủ của hàm map
-Array.prototype.map(callbackFunction, thisArgument?)
-Hàm map trả về một mảng mới sau khi chạy hàm callbackFunction với mỗi phần tử.
-Xem ví dụ sau
-
-     */
-
-    const arr = ['javascript', 'ruby', 'php'];
-
-    // Giờ ta muốn trả ra 1 mảng mới với các phần tử đều được thêm chữ `language`
-    const newArr = arr.map(function(elem) {
-        return elem + ' language';
-    });
-    // (3) ["javascript language", "ruby language", "php language"]
-    /*
-    7. Array.prototype.reduce()
-Cú pháp đầy đủ của hàm reduce
-Array.prototype.reduce(callbackFunction, initialValue?)
-Hàm reduce thực hiện callbackFunction 1 lần cho mỗi phần tử trong mảng. Sau đó sẽ tính toán, xử lý và trả về một kết quả.
-Hàm reduce sẽ không thực hiện callbackFunction với các phần tử không có giá trị.
-Hàm callback sẽ có 4 tham số previousValue, currentValue, currentIndex, arr.
-Nếu khi chạy tham số initialValue không được truyền thì previousValue sẽ bằng phần tử đầu tiên còn currentValue sẽ bằng phần tử thứ 2 của mảng.
-Xem ví dụ sau
-     */
-
-    const arr1 = [1, 20, 34, 11];
-
-    // Giờ ta muốn tính tổng của mảng trên bằng hàm reduce, ta làm như sau
-    const total = arr1.reduce(function(a, b,currentIndex, arr) {
-        console.log("currentIndex",currentIndex);
-        return a + b;
-    });
-    console.log(total);
-    // 66
 
 </script>
 </body>
