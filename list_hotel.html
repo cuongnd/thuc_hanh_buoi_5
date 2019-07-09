@@ -11,7 +11,11 @@
 
     </div>
     <div class="footer">
-        <div class="load-more"><a href="" onclick="firstLoad()">Load More</a></div>
+        <div class="load-more"><a href="javascript:void(0)" onclick="firstLoad()">Load More</a></div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="load-more"><a href="javascript:void(0)" onclick="check_content()">xem noi dung</a></div>
     </div>
 
 </body>
@@ -74,6 +78,7 @@
             </div>
         </div>
     `;
+    var elent_list_hotel=document.getElementById('list_hotel');
     function firstLoad(){
         for(var i=0;i<list_hotel.length;i++){
             var hotel_current_item=list_hotel[i];
@@ -97,12 +102,17 @@
             </div>
         </div>
     `;
-        var elent_list_hotel=document.getElementById('list_hotel');
+
         console.log("lan",i);
         console.log("elent_list_hotel.innerHTML",elent_list_hotel.innerHTML);
             elent_list_hotel.innerHTML =elent_list_hotel.innerHTML+ current_hotel;
         }
     }
     firstLoad();
+    function check_content(){
+        var element_list_hotel=document.getElementById('list_hotel');
+        console.log("innerHTML",element_list_hotel.innerHTML);
+
+    }
 </script>
 </html>
