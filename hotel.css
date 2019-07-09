@@ -4,6 +4,7 @@
 }
 .item{
     margin-bottom: 10px;
+    height: 200px;
 }
 .item .right-content{
     margin-left: 10px;

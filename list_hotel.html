@@ -6,51 +6,103 @@
     <link type="text/css" rel="stylesheet" href="hotel.css">
 </head>
 <body>
-    <div class="list-hotel">
-        <div class="item">
-            <div class="image">
-                <img src="https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg">
-            </div>
-            <div class="right">
-                <div class="right-content">
-                    <h3>khach san 1</h3>
-                    <div class="star">3</div>
-                    <div class="description">khach san thoang may</div>
-                    <div class="price">30$</div>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="image">
-                <img src="https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg">
-            </div>
-            <div class="right">
-                <div class="right-content">
-                    <h3>khach san 1</h3>
-                    <div class="star">3</div>
-                    <div class="description">khach san thoang may</div>
-                    <div class="price">30$</div>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="image">
-                <img src="https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg">
-            </div>
-            <div class="right">
-                <div class="right-content">
-                    <h3>khach san 1</h3>
-                    <div class="star">3</div>
-                    <div class="description">khach san thoang may</div>
-                    <div class="price">30$</div>
-                </div>
-            </div>
-        </div>
+    <div id="list_hotel" class="list-hotel">
+
 
     </div>
     <div class="footer">
-        <div class="load-more"><a href="">Load More</a></div>
+        <div class="load-more"><a href="" onclick="firstLoad()">Load More</a></div>
     </div>
 
 </body>
+<script type="text/javascript">
+    var list_hotel=[
+        {
+            "name": "hotel1",
+            "image_path":"https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg",
+            "address": "hanoi",
+            "price": 30,
+            "star": 3,
+            "description": "khach san thoang mat"
+        },
+        {
+            "name": "hotel2",
+            "image_path":"https://q-cf.bstatic.com/images/hotel/max1024x768/923/92341424.jpg",
+            "address": "ninh binh",
+            "price": 40,
+            "star": 2,
+            "description": "khach san 0 thoang mat"
+        },
+        {
+            "name": "hotel3",
+            "image_path":"https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184731.jpg",
+            "address": "bac ninh",
+            "price": 50,
+            "star": 1,
+            "description": "khach san nong"
+        },
+        {
+            "name": "hotel4",
+            "image_path":"https://r-cf.bstatic.com/images/hotel/max1024x768/681/68184335.jpg",
+            "address": "bac giang",
+            "price": 60,
+            "star": 5,
+            "description": "khach san ban"
+        },
+        {
+            "name": "hotel5",
+            "image_path":"https://r-cf.bstatic.com/images/hotel/max1024x768/923/92341415.jpg",
+            "address": "quang ninh",
+            "price": 10,
+            "star": 4,
+            "description": "khach san gia re"
+        }
+
+    ];
+    var hotel_temp=`
+            <div class="item">
+            <div class="image">
+                <img src="https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg">
+            </div>
+            <div class="right">
+                <div class="right-content">
+                    <h3>khach san 1</h3>
+                    <div class="star">3</div>
+                    <div class="description">khach san thoang may</div>
+                    <div class="price">30$</div>
+                </div>
+            </div>
+        </div>
+    `;
+    function firstLoad(){
+        for(var i=0;i<list_hotel.length;i++){
+            var hotel_current_item=list_hotel[i];
+            var image_path=hotel_current_item.image_path;
+            var hotel_name=hotel_current_item.name;
+            var star=hotel_current_item.star;
+            var price=hotel_current_item.price;
+            var description=hotel_current_item.description;
+            var current_hotel=`
+            <div class="item">
+            <div class="image">
+                <img src="${image_path}">
+            </div>
+            <div class="right">
+                <div class="right-content">
+                    <h3>${hotel_name}</h3>
+                    <div class="star">${star}</div>
+                    <div class="description">${description}</div>
+                    <div class="price">${price}$</div>
+                </div>
+            </div>
+        </div>
+    `;
+        var elent_list_hotel=document.getElementById('list_hotel');
+        console.log("lan",i);
+        console.log("elent_list_hotel.innerHTML",elent_list_hotel.innerHTML);
+            elent_list_hotel.innerHTML =elent_list_hotel.innerHTML+ current_hotel;
+        }
+    }
+    firstLoad();
+</script>
 </html>
