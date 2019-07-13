@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>list hotel</title>
     <link type="text/css" rel="stylesheet" href="hotel.css">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div id="list_hotel" class="list-hotel">
@@ -20,49 +25,16 @@
 
 </body>
 <script type="text/javascript">
-    var list_hotel=[
-        {
-            "name": "hotel1",
-            "image_path":"https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg",
-            "address": "hanoi",
-            "price": 30,
-            "star": 3,
-            "description": "khach san thoang mat"
-        },
-        {
-            "name": "hotel2",
-            "image_path":"https://q-cf.bstatic.com/images/hotel/max1024x768/923/92341424.jpg",
-            "address": "ninh binh",
-            "price": 40,
-            "star": 2,
-            "description": "khach san 0 thoang mat"
-        },
-        {
-            "name": "hotel3",
-            "image_path":"https://q-cf.bstatic.com/images/hotel/max1024x768/681/68184731.jpg",
-            "address": "bac ninh",
-            "price": 50,
-            "star": 1,
-            "description": "khach san nong"
-        },
-        {
-            "name": "hotel4",
-            "image_path":"https://r-cf.bstatic.com/images/hotel/max1024x768/681/68184335.jpg",
-            "address": "bac giang",
-            "price": 60,
-            "star": 5,
-            "description": "khach san ban"
-        },
-        {
-            "name": "hotel5",
-            "image_path":"https://r-cf.bstatic.com/images/hotel/max1024x768/923/92341415.jpg",
-            "address": "quang ninh",
-            "price": 10,
-            "star": 4,
-            "description": "khach san gia re"
-        }
+    var get_list_room_hotel = "https://t3h.vantinviet.com/index.php?option=com_content&task=article.get_json_content";
+   /* $.getJSON( get_list_room_hotel, {
 
-    ];
+    })
+        .done(function( data ) {
+            console.log("data",data);
+
+        });
+*/
+    var list_hotel='[{"id":"1","room_name":"phong loai 1","price":"20","mo_ta_ngan":"mo ta 1"},{"id":"2","room_name":"phong loai2","price":"30","mo_ta_ngan":"mo ta 2"},{"id":"3","room_name":"phong loai 4","price":"60","mo_ta_ngan":"mo ta 30"},{"id":"4","room_name":"phong loai 5","price":"20","mo_ta_ngan":"mo ta 4"},{"id":"5","room_name":"phong loai 7","price":"20","mo_ta_ngan":"mo ta 7"},{"id":"6","room_name":"phong loai 9","price":"10","mo_ta_ngan":"mo ta 8"}]';
     var hotel_temp=`
             <div class="item">
             <div class="image">
@@ -103,8 +75,7 @@
         </div>
     `;
 
-        console.log("lan",i);
-        console.log("elent_list_hotel.innerHTML",elent_list_hotel.innerHTML);
+
             elent_list_hotel.innerHTML =elent_list_hotel.innerHTML+ current_hotel;
         }
     }
