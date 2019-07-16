@@ -25,15 +25,20 @@
 
 </body>
 <script type="text/javascript">
-    var get_list_room_hotel = "https://t3h.vantinviet.com/index.php?option=com_content&task=article.get_json_content";
-   /* $.getJSON( get_list_room_hotel, {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://t3h.vantinviet.com/index.php?option=com_content&task=article.get_json_content", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            // WARNING! Might be evaluating an evil script!
+            var resp = eval("(" + xhr.responseText + ")");
+            console.log("resp",resp);
+        }
+    }
+    xhr.send();
 
-    })
-        .done(function( data ) {
-            console.log("data",data);
 
-        });
-*/
+
+
     var list_hotel='[{"id":"1","room_name":"phong loai 1","price":"20","mo_ta_ngan":"mo ta 1"},{"id":"2","room_name":"phong loai2","price":"30","mo_ta_ngan":"mo ta 2"},{"id":"3","room_name":"phong loai 4","price":"60","mo_ta_ngan":"mo ta 30"},{"id":"4","room_name":"phong loai 5","price":"20","mo_ta_ngan":"mo ta 4"},{"id":"5","room_name":"phong loai 7","price":"20","mo_ta_ngan":"mo ta 7"},{"id":"6","room_name":"phong loai 9","price":"10","mo_ta_ngan":"mo ta 8"}]';
     var hotel_temp=`
             <div class="item">

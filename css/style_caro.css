@@ -1,0 +1,19 @@
+.row{
+    margin-bottom: 10px;
+}
+.button{
+    padding: 10px;
+}
+.caro-wrapper-content
+{
+    margin: 0 auto;
+    width: 800px;
+    margin-bottom: 200px;
+}
+.box{
+    border: 1px solid #ddd;
+    width: 20px;
+    height: 20px;
+    float: left;
+    box-sizing: border-box;
+}
