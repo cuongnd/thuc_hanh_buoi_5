@@ -11,8 +11,8 @@
 </head>
 <body>
     <div class="caro-wrapper-content">
-        <div class="row"><label>Row<input type="text" id="caro_row"></label></div>
-        <div class="row"><label>Column<input type="text" id="caro_column"></label></div>
+        <div class="row"><label>Row<input type="text" id="caro_row" value="40"></label></div>
+        <div class="row"><label>Column<input type="text" id="caro_column" value="40"></label></div>
         <div class="row"><button type="button" class="button" id="build" >Build</button></div>
         <div class="row"><button type="button" class="button" id="reset" >Reset</button></div>
         <div id="caro_main"></div>
@@ -43,13 +43,23 @@
                 $caro_main.css({
                    width: caro_column*20
                 });
-
+                var total_click=0;
                 $('.box').click(function (e) {
                     var box_content=$(this).text();
                     var ox="0";
+                    var x=0,y=0;
                     if(box_content==="")
                     {
                         $(this).text(flag_ox);
+                        total_click++;
+
+                        y=$(this).attr('row');
+                        x=$(this).attr('column');
+                        x=parseInt(x);
+                        y=parseInt(y);
+                        if(total_click>8 && kiem_tra_thang_thu(flag_ox,x,y)){
+                            alert('dã có thằng nào đó thắng');
+                        }
                         if(flag_ox==="O"){
                             flag_ox="X";
                         }else{
@@ -59,6 +69,48 @@
                     }
                 });
             });
+            function kiem_tra_thang_thu(current,x,y) {
+                console.log("current",current);
+                /**
+                 * duyet theo chieu ngang,tien
+                 * 1.tìm gốc
+                 * 2.tiến đủ 5 phần tử
+                 */
+                //tìm gốc
+                var preCurrent="";
+                console.log("X",x);
+                console.log("y",y);
+                var total_while=0;
+                do {
+                    x--;
+                    if(total_while>3){
+                        return true;
+                    }
+                    total_while++;
+                    preCurrent=$('.box[column="'+x+'"][row="'+y+'"]').text();
+                    console.log("preCurrent",preCurrent);
+
+                }
+                while (preCurrent===current);
+                console.log("duyet lui khong tin thay thang");
+                console.log("X",x);
+                console.log("y",y);
+                total_while=0;
+                //kiem tra tien xem co thang hay khong
+                do {
+                    x++;
+                    if(total_while>4){
+                        return true;
+                    }
+                    total_while++;
+                    preCurrent=$('.box[column="'+x+'"][row="'+y+'"]').text();
+                    console.log("preCurrent",preCurrent);
+
+                }while (preCurrent===current);
+
+
+
+            }
         });
     </script>
 </body>
