@@ -30,8 +30,16 @@ if (isset($_POST['xuat'])) {
             $nghiem="Phương trình vô nghiệm";
         }
     } else {
+        if($b==0){
+            if($c!=0){
+                $nghiem="Phương trình vô nghiệm";
+            }else{
+                $nghiem="Phương trình vô số nghiệm";
+            }
+        }else{
             $x=-$c/$b;
             $nghiem="Phương trình có 1 nghiệm x=$x";
+        }
     }
 }
 ?>
