@@ -13,10 +13,10 @@ $nghiem = "";
 $a="";
 $b="";
 $c="";
-if (isset($_POST['xuat'])) {
-    $a = $_POST['a'];
-    $b = $_POST['b'];
-    $c = $_POST['c'];
+if (isset($_GET['xuat'])) {
+    $a = $_GET['a'];
+    $b = $_GET['b'];
+    $c = $_GET['c'];
     if ($a != 0) {
         $detal = $b * $b - 4 * $a * $c;
         if($detal>0){
@@ -43,13 +43,14 @@ if (isset($_POST['xuat'])) {
     }
 }
 ?>
-<form action="bai_5.php" method="post">
+<form action="bai_5.php" method="get">
     <table border="1" style="margin: 40px auto">
         <tr>
             <td colspan="4">Giải phương trình bậc 2</td>
         </tr>
         <tr>
             <td>Phương trình</td>
+
             <td><input type="text" value="<?php echo $a ?>" name="a">X^2 +</td>
             <td><input type="text" value="<?php echo $b ?>" name="b">X +</td>
             <td><input type="text" value="<?php echo $c ?>" name="c"> = 0</td>
@@ -59,7 +60,7 @@ if (isset($_POST['xuat'])) {
         </tr>
         <tr>
             <td colspan="4" align="center">
-                <button style="padding: 10px" type="submit" name="xuat">Xuất</button>
+                <button style="padding: 10px" type="submit" value="tinh_toan" name="xuat">Xuất</button>
             </td>
         </tr>
     </table>
