@@ -17,8 +17,9 @@
         $ten_the_loai=$_POST['ten_the_loai'];
         $thu_tu=$_POST['thu_tu'];
         $an_hien=$_POST['an_hien'];
-        $sql="INSERT INTO `news`.`category2` (`id`, `category_name`, `thu_tu`, `status`) VALUES (NULL, '$ten_the_loai', '$thu_tu', '$an_hien');";
+        $sql="INSERT INTO `category2` (`id`, `category_name`, `thu_tu`, `status`) VALUES (NULL, '$ten_the_loai', '$thu_tu', '$an_hien');";
         mysqli_query($connection,$sql);
+        header("location:theloai.php");
     }else if($_POST['huy']){
         //thuc hien lenh huy
     }
