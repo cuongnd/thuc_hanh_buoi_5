@@ -23,6 +23,7 @@ $kq=mysqli_query($connection,$sql);
         <td>Ten the loai</td>
         <td>thu tu</td>
         <td>an hien</td>
+        <td colspan="2"><a href="them_nhom.php">Thêm nhóm mới</a></td>
     </tr>
     <?php while($row = mysqli_fetch_array($kq)){ ?>
 
@@ -30,7 +31,15 @@ $kq=mysqli_query($connection,$sql);
         <td><?php echo $row['id'] ?></td>
         <td><?php echo $row['category_name'] ?></td>
         <td><?php echo $row['thu_tu'] ?></td>
-        <td><?php echo $row['status'] ?></td>
+        <td>
+            <?php if($row['status']==1){ ?>
+                Hiện
+            <?php }else{ ?>
+                Ẩn
+            <?php } ?>
+        </td>
+        <td><a href="them_nhom.php?action=edit&id=<?php echo $row['id'] ?>">sửa</a></td>
+        <td><a href="theloai.php?action=delete&id=<?php echo $row['id'] ?>">Xóa</a></td>
     </tr>
     <?php } ?>
 
