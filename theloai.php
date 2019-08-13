@@ -38,7 +38,7 @@ $kq=mysqli_query($connection,$sql);
                 Ẩn
             <?php } ?>
         </td>
-        <td><a href="them_nhom.php?action=edit&id=<?php echo $row['id'] ?>">sửa</a></td>
+        <td><a href="sualoai.php?action=edit&id=<?php echo $row['id'] ?>">sửa</a></td>
         <td><a href="theloai.php?action=delete&id=<?php echo $row['id'] ?>">Xóa</a></td>
     </tr>
     <?php } ?>
