@@ -13,9 +13,18 @@ include_once "connection.php";
 $ten_the_loai="";
 $thu_tu=0;
 $an_hien=1;
+$ten_the_loai="";
 if(isset($_POST['luu']) && $_POST['luu']=='sua'){
-    echo "thuc hanh dong sua";
-    die;
+    $ten_the_loai=$_POST["ten_the_loai"];
+    $thu_tu=$_POST["thu_tu"];
+    $an_hien=$_POST["an_hien"];
+    $id=$_POST["id"];
+    $sql="UPDATE  `category2`
+        SET category_name='$ten_the_loai',thu_tu='$thu_tu',status='$an_hien'
+    WHERE id='$id'";
+    mysqli_query($connection,$sql);
+    header("location:theloai.php");
+
 }
 if(isset($_GET['action']) && $_GET['action']=="edit"){
     //lay ra id cua nhom
