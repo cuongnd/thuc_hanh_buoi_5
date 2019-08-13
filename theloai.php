@@ -12,6 +12,12 @@
 include_once "connection.php";
 $sql="SELECT * FROM `category2`";
 $kq=mysqli_query($connection,$sql);
+if(isset($_GET["action"]) && $_GET["action"]=="delete"){
+    $id=$_GET["id"];
+    $sql1="DELETE FROM `category2` WHERE id=$id";
+    mysqli_query($connection, $sql1);
+}
+
 
 
 
