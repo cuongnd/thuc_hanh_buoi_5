@@ -41,7 +41,7 @@ $kq=mysqli_query($connection,$sql);
                     <td><?php echo $row['anh_dai_dien'] ?></td>
                     <td><?php echo $row['trang_thai']==1? "Hiện":"Ẩn" ?></td>
                     <td><a href="tintuc.php?action=xoa&id=<?php echo $row['id'] ?>">Xóa</a></td>
-                    <td><a href="sua_tin_tuc.php?action=sua&id=<?php echo $row['id'] ?>">Sửa</a></td>
+                    <td><a href="sua_tin_tuc.php?&id=<?php echo $row['id'] ?>">Sửa</a></td>
                 </tr>
             <?php $i++; ?>
             <?php } ?>
