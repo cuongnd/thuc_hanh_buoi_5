@@ -6,6 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="css/news.css" rel="stylesheet">
+    <script
+            src="js/jquery-3.4.1.js"
+           ></script>
     <title>Sửa tin tức</title>
 </head>
 <body>
@@ -16,6 +19,8 @@
         $sql="SELECT * FROM `tin_tuc` WHERE id=$id";
         $kq=mysqli_query($connection,$sql);
         $data=mysqli_fetch_array($kq);
+
+
     }
     if(isset($_POST['cap-nhat'])){
         $id=$_POST['id'];
@@ -56,7 +61,14 @@
                 </tr>
                 <tr>
                     <td>Ảnh đại diện</td>
-                    <td><input type="file" name="anh_dai_dien"></td>
+                    <td>
+                        <div class="wrapper-content-anh-dai-dien">
+                            <img id="anh-dai-dien" class="anh-dai-dien" src="<?php echo $data['anh_dai_dien'] ?>">
+                            <button  type="button"  class="xoa <?php echo $data['anh_dai_dien']?'':' hide ' ?>" >Xóa</button>
+
+                        </div>
+                        <input type="file" class="anh_dai_dien" name="anh_dai_dien">
+                    </td>
                 </tr>
                 <tr>
                     <td>Nội dung ngắn</td>
@@ -93,5 +105,30 @@
             <input type="hidden" name="id" value="<?php echo $data['id'] ?>">
         </form>
     </div>
+    <script type="text/javascript">
+        var root_image="<?php echo $data['anh_dai_dien'] ?>";
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#anh-dai-dien').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $=jQuery;
+        $('.wrapper-content-anh-dai-dien .xoa').click(function (event) {
+            $('#anh-dai-dien').attr('src','');
+            $('.wrapper-content-anh-dai-dien .xoa').addClass('hide');
+            $('.sua-tin-tuc .anh_dai_dien').val("");
+
+        });
+        $('.sua-tin-tuc .anh_dai_dien').change(function (event) {
+            readURL(this);
+            $('.wrapper-content-anh-dai-dien .xoa').removeClass('hide');
+        });
+    </script>
 </body>
 </html>

@@ -5,3 +5,24 @@
 .danh-sach-tin-tuc .anh-dai-dien{
     width: 100px;
 }
+.sua-tin-tuc .wrapper-content-anh-dai-dien
+{
+    position: relative;
+    width: 200px;
+}
+.sua-tin-tuc .wrapper-content-anh-dai-dien .xoa{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+}
+.sua-tin-tuc .wrapper-content-anh-dai-dien .xoa.hide{
+    display: none;
+}
+.sua-tin-tuc .wrapper-content-anh-dai-dien .anh-dai-dien{
+    width: 100%;
+}
