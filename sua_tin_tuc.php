@@ -24,8 +24,21 @@
         $noi_dung=$_POST['noi-dung'];
         $an_hien=$_POST['an-hien'];
         $category_id=$_POST['category_id'];
+        
+        //cap nhật ảnh
+        $anh_dai_dien=$_FILES['anh_dai_dien'];
+        $sql_update_anh="";
+        if($anh_dai_dien['name']){
+            $name=$anh_dai_dien['name'];
+            $a_anh_dai_dien="anh_dai_dien_{$id}_$name";
+            $tmp_name=$anh_dai_dien['tmp_name'];
+            move_uploaded_file($tmp_name,"images/news/$a_anh_dai_dien");
+            $sql_update_anh=",anh_dai_dien='images/news/$a_anh_dai_dien'";
+        }
+
+
         $sql="UPDATE  `tin_tuc`
-        SET tieu_de='$tieu_de',noi_dung_ngan='$noi_dung_ngan',noi_dung='$noi_dung',category_id='$category_id',trang_thai='$an_hien'
+        SET tieu_de='$tieu_de'$sql_update_anh,noi_dung_ngan='$noi_dung_ngan',noi_dung='$noi_dung',category_id='$category_id',trang_thai='$an_hien'
     WHERE id='$id'";
         mysqli_query($connection,$sql);
         header("location:tintuc.php");
@@ -35,11 +48,15 @@
 
     ?>
     <div class="sua-tin-tuc">
-        <form action="sua_tin_tuc.php" method="post">
-            <table border="1" style="margin: 20px auto">
+        <form action="sua_tin_tuc.php" method="post" enctype="multipart/form-data">
+            <table border="1" style="margin: 20px auto" >
                 <tr>
                     <td>Tiêu đề tin tức</td>
                     <td><input class="tieu-de" name="tieu-de" value="<?php echo $data['tieu_de'] ?>"></td>
+                </tr>
+                <tr>
+                    <td>Ảnh đại diện</td>
+                    <td><input type="file" name="anh_dai_dien"></td>
                 </tr>
                 <tr>
                     <td>Nội dung ngắn</td>
