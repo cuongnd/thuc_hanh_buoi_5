@@ -23,6 +23,10 @@
         if($data['total']>=1){
             echo "bạn đã login thành công";
             $_SESSION['da_dang_nhap']="ok";
+            $_SESSION['profile']=array(
+              "username"=>$username,
+              "password"=>$password
+            );
              header("location:profile.php");
 
         }
