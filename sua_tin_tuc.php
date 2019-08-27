@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="css/news.css" rel="stylesheet">
+    <script src="ckeditor/ckeditor.js"></script>
     <script
             src="js/jquery-3.4.1.js"
            ></script>
@@ -19,6 +20,7 @@
         $sql="SELECT * FROM `tin_tuc` WHERE id=$id";
         $kq=mysqli_query($connection,$sql);
         $data=mysqli_fetch_array($kq);
+
 
 
     }
@@ -107,6 +109,7 @@
     </div>
     <script type="text/javascript">
         var root_image="<?php echo $data['anh_dai_dien'] ?>";
+        CKEDITOR.replace( 'noi-dung' );// tham số là biến name của textarea
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

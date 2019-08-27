@@ -16,6 +16,7 @@ $kq=mysqli_query($connection,$sql);
 
 ?>
 <div class="danh-sach-tin-tuc">
+
     <form action="tintuc.php" method="post">
         <table border="1" style="margin: 20px auto">
             <thead>
