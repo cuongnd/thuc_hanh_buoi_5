@@ -17,9 +17,13 @@ Route::get('/', function () {
 Route::get('/admin/news', function () {
     return view('admin.news.list');
 });
+//show form insert data
 Route::get('/admin/news/item', function () {
     return view('admin.news.item');
 });
+//send data new
+Route::post('/admin/news/item',['as'=>'post-data-new','uses'=>'Controller@insert_new']);
+
 Route::get('/admin/news/item/{$id}', function ($id) {
     return view('admin.news.item',compact('id'));
 });
