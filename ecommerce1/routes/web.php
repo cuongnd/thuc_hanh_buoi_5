@@ -27,3 +27,37 @@ Route::post('/admin/news/item',['as'=>'post-data-new','uses'=>'Controller@insert
 Route::get('/admin/news/item/{$id}', function ($id) {
     return view('admin.news.item',compact('id'));
 });
+Route::get('/admin/login',['as'=>'admin-login','uses'=>'UserController@showFormLogin']);
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+    /*
+     * root/admin
+     */
+    Route::get('/',['as'=>'admin-index','uses'=>'CategoryController@getIndexAdmin']);
+
+    Route::group(['prefix'=>'danh-muc'],function(){
+        Route::get("sua/{id}",['as'=>'suadanhmuc','uses'=>'CategoryController@getEditCate']);
+        Route::get("danh-sach",['as'=>'listdanhmuc','uses'=>'CategoryController@getListCate']);
+
+
+    });
+    Route::group(['prefix'=>'san-pham'],function () {
+        Route::get("danh-sach-san-pham",['as'=>'listsanpham','uses'=>'ProductController@getListProduct']);
+    });
+
+    /*
+     * quản lý đơn hàng
+     */
+    Route::group(['prefix' => 'don-hang'], function () {
+        //root/admin/don-hang/danh-sach
+        Route::get('danh-sach', 'BillController@getListBill');
+
+        Route::get('xoa/{id}', 'BillController@getDelBill');
+
+        Route::get('chi-tiet/{id}', ['as' => 'admin.detail.bill', 'uses' => 'BillController@getDetailBill']);
+
+        Route::get('chi-tiet/xoa/{id}', 'BillController@getDelDetailBill');
+    });
+
+});
+Route::get('admin/dang-nhap', 'Admin\UserController@getAdminLogin');
+Route::post('admin/dang-nhap', 'Admin\UserController@postAdminLogin');

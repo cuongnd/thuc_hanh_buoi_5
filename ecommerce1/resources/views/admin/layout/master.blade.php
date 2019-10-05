@@ -10,9 +10,9 @@
     <title>Trang admin</title>
     <base href="{{asset('')}}" >
     <!-- Bootstrap Core CSS -->
-    <link href="admin_asset/bootstrap/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin_asset/bootstrap/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- customCSS -->
-    <link href="admin_asset/custom.css" rel="stylesheet">
+    <link href="/admin_asset/custom.css" rel="stylesheet">
 
 
 
@@ -24,7 +24,7 @@
 
     <div id="wrapper">
 
-        
+        @include('admin.layout.header')
         @yield('content')
     </div>
     <!-- /#wrapper -->
