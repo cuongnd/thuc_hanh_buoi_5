@@ -49,7 +49,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
      */
     Route::group(['prefix' => 'don-hang'], function () {
         //root/admin/don-hang/danh-sach
-        Route::get('danh-sach', 'BillController@getListBill');
+        Route::get('danh-sach',['as'=>'danh-sach-don-hang','uses'=>'BillController@getListBill'] );
 
         Route::get('xoa/{id}', 'BillController@getDelBill');
 

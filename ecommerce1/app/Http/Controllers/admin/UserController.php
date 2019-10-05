@@ -94,9 +94,6 @@ class UserController extends Controller
     }
     public function postAdminLogin(Request $request)
     {
-
-
-
         $email = $request->txtEmail;
         $password = $request->txtPass;
         if (Auth::guard()->attempt(['email' => $email, 'password' => $password,'level'=>2,'active'=> 1])) {
