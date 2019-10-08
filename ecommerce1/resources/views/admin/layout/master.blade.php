@@ -60,16 +60,16 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="{{url('/')}}admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{url('/')}}admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
 
 
 
-    <script src="admin_asset/ckeditor/ckeditor.js"></script>
+    <script src="{{url('/')}}admin_asset/ckeditor/ckeditor.js"></script>
 
     @yield('script')
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->

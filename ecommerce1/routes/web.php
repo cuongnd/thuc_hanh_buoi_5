@@ -14,6 +14,9 @@ Route::get('/',['as'=>'trang-chu','uses'=>'PageController@getIndexPage']);
 Route::get('/admin/news', function () {
     return view('admin.news.list');
 });
+Route::group(['prefix' => 'ajax'], function () {
+    Route::post('add-to-cart', 'AjaxController@postAjaxAddtoCart');
+});
 //show form insert data
 Route::get('/admin/news/item', function () {
     return view('admin.news.item');

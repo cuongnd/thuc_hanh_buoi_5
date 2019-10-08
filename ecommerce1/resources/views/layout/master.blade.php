@@ -9,15 +9,28 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Trang admin</title>
     <base href="{{asset('')}}" >
-    <link href="{{url('/')}}/admin_asset/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="{{url('/')}}/frontend_asset/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <!-- customCSS -->
-    <link href="{{url('/')}}/admin_asset/custom.css" rel="stylesheet">
+    <link href="{{url('/')}}/frontend_asset/custom.css" rel="stylesheet">
 
 
 
     <!-- Custom Fonts -->
-    <link href="admin_asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-</head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"></head>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="{{url('/')}}/frontend_asset/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{url('/')}}/frontend_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
+
+
+    <script src="{{url('/')}}/frontend_asset/ckeditor/ckeditor.js"></script>
+
 
 <body>
     <div class="container">
@@ -43,19 +56,6 @@
             </div>
         </div>
     </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-
-
-
-
-    <script src="admin_asset/ckeditor/ckeditor.js"></script>
 
     @yield('script')
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
