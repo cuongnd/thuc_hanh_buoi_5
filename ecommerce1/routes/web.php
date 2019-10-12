@@ -17,6 +17,7 @@ Route::get('/admin/news', function () {
 Route::group(['prefix' => 'ajax'], function () {
     Route::post('add-to-cart', 'AjaxController@postAjaxAddtoCart');
 });
+Route::get('gio-hang', ['as' => 'giohang', 'uses' => 'PageController@getShowCart']);
 //show form insert data
 Route::get('/admin/news/item', function () {
     return view('admin.news.item');

@@ -49,9 +49,9 @@ class PageController extends Controller
     }
     public function getIndexPage()
     {
-    	$new_product = Product::where('new',1)->select('id','name','slug_name','image_product','unit_price','promotion_price','new')->limit(5)->orderBy('id','desc')->get();
+    	$new_product = Product::where('new',1)->select('id','name','slug_name','price','image_product','unit_price','promotion_price','new')->limit(5)->orderBy('id','desc')->get();
 
-        $sale_product = Product::where('promotion_price','>',0)->select('id','name','slug_name','image_product','unit_price','promotion_price','new')->limit(5)->orderBy('id','desc')->get();
+        $sale_product = Product::where('promotion_price','>',0)->select('id','name','slug_name','price','image_product','unit_price','promotion_price','new')->limit(5)->orderBy('id','desc')->get();
     
     	return view('page.index',compact('new_product','sale_product'));
     }

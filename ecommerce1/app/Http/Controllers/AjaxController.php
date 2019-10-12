@@ -23,10 +23,42 @@ class AjaxController extends Controller
 	public function postAjaxAddtoCart(Request $request)
     {
         $product_id=$request->product_id;
+        $quality=$request->quality;
         $product = Product::find($product_id);
+
         $count = Cart::count();
-        echo $count;
-        die;
+        $product_data=[
+            'id' => $product_id,
+            'name' => $product->name,
+            'qty' => $quality,
+            'price' => $product->price,
+            'options' => []
+        ];
+        if($count > 0)
+        {
+            $exists=false;
+            foreach (Cart::content() as $row) {
+                if (($product_id == $row->id)) {
+                    $rowId=$row->rowId;
+                    $qty=$row->qty;
+                    $quality=$quality+$qty;
+                    Cart::update($rowId,$quality);
+                    $exists=true;
+                }
+            }
+            if(!$exists){
+                Cart::add($product_data);
+            }
+        }else{
+            Cart::add($product_data);
+        }
+
+        $response=new \stdClass();
+        $response->result="success";
+        $response->data=[];
+        echo json_encode($response);
+
+
     }
 
     public function postAjaxAddCounpon(Request $request){

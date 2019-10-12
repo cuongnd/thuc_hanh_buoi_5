@@ -29,6 +29,7 @@
 
 
 
+
     <script src="{{url('/')}}/frontend_asset/ckeditor/ckeditor.js"></script>
 
 
@@ -36,10 +37,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="logo"><h3>Php1906e</h3></div>
+                <div class="logo"><h3><a href="{{url('/')}}">Php1906e</a></h3></div>
             </div>
             <div class="col-md-6">
-                khu vuc tim kiem
+                <a href="{{url('/')}}/gio-hang">Cart</a>
             </div>
         </div>
         <div class="row">
