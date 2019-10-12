@@ -41,6 +41,8 @@
             </div>
             <div class="col-md-6">
                 <a href="{{url('/')}}/gio-hang">Cart</a>
+                <a href="{{url('/')}}/dang-ky">Đăng ký</a>
+                <a href="{{url('/')}}/dang-nhap">Đăng nhập</a>
             </div>
         </div>
         <div class="row">

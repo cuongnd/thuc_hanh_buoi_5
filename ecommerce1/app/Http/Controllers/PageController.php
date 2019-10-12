@@ -235,13 +235,10 @@ class PageController extends Controller
         }
         return view('page.register');
     }
-    public function postDangKy(UserRequest $request)
+    public function postDangKy(Request $request)
     {
-        $this->validate($request,[
-            'txtEmail' => 'unique:users,email'
-        ],[
-            "txtEmail.unique" => "Email của bạn đã tồn tại"
-        ]);
+
+
          if($request->txtPass != $request->txtConfirmPass){
             return redirect('dang-ky')->with('loi','Mật khẩu không trùng khớp');
         }else{

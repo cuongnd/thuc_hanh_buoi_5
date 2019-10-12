@@ -18,6 +18,19 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::post('add-to-cart', 'AjaxController@postAjaxAddtoCart');
 });
 Route::get('gio-hang', ['as' => 'giohang', 'uses' => 'PageController@getShowCart']);
+Route::get('thanh-toan', ['as' => 'thanhtoan', 'uses' => 'PageController@getShowCheckout']);
+//đăng ký
+Route::get('dang-ky', ['as' => 'dangky', 'uses' => 'PageController@getDangKy']);
+
+Route::post('dang-ky', ['as' => 'dangky', 'uses' => 'PageController@postDangKy']);
+
+//Đăng nhập
+Route::get('dang-nhap', ['as' => 'get.login', 'uses' => 'PageController@getLogin']);
+
+Route::post('dang-nhap', ['as' => 'post.login', 'uses' => 'PageController@postLogin']);
+
+
+
 //show form insert data
 Route::get('/admin/news/item', function () {
     return view('admin.news.item');
