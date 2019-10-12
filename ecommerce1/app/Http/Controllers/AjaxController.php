@@ -22,12 +22,11 @@ class AjaxController extends Controller
 {
 	public function postAjaxAddtoCart(Request $request)
     {
-        $data_result=array(
-            "result"=>"hello error",
-            "data"=>array(),
-            "product_id"=>$request->product_id
-        );
-        echo json_encode($data_result);
+        $product_id=$request->product_id;
+        $product = Product::find($product_id);
+        $count = Cart::count();
+        echo $count;
+        die;
     }
 
     public function postAjaxAddCounpon(Request $request){
