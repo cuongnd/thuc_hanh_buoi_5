@@ -100,7 +100,6 @@ class ComposerStaticInit12f698a0e6712d75ccdf111dfd3e80a4
         ),
         'F' => 
         array (
-            'Fideloper\\Proxy\\' => 16,
             'Faker\\' => 6,
         ),
         'E' => 
@@ -290,10 +289,6 @@ class ComposerStaticInit12f698a0e6712d75ccdf111dfd3e80a4
         'Gloudemans\\Shoppingcart\\' => 
         array (
             0 => __DIR__ . '/..' . '/gloudemans/shoppingcart/src',
-        ),
-        'Fideloper\\Proxy\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fideloper/proxy/src',
         ),
         'Faker\\' => 
         array (
@@ -1286,8 +1281,6 @@ class ComposerStaticInit12f698a0e6712d75ccdf111dfd3e80a4
         'Faker\\Provider\\zh_TW\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/zh_TW/Text.php',
         'Faker\\UniqueGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/UniqueGenerator.php',
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/ValidGenerator.php',
-        'Fideloper\\Proxy\\TrustProxies' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustProxies.php',
-        'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
