@@ -9,12 +9,41 @@
     width: 600px;
     margin: 50px auto;
 }
+.logo{
+    width: 150px;
+}
+.top-right-links{
+    padding: 0;
+    margin:0;
+    list-style: none;
+}
+.top-right-links li{
+    float: left;
+}
+.top-right-links li a{
+    padding: 10px;
+}
+.top-right-links li a:hover{
+    text-decoration: none;
+}
+.wrapper-content-menu-ngang{
+    margin-top: 20px;
+}
 .menu-ngang
 {
     list-style: none;
     padding: 0;
     margin: 0;
 
+}
+.cart-link{
+    position: relative;
+}
+.wrapper-content-cart-dropdown{
+    border-radius: 0;
+}
+.wrapper-content-cart{
+    padding: 10px;
 }
 .menu-ngang li{
     float: left;
