@@ -46,7 +46,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">menu ngang o day</div>
+            <div class="col-md-12">
+                <ul class="menu-ngang">
+                    <li><a class="active" href="{{url('/')}}">Trang chủ</a></li>
+                    <li><a href="{{url('/')}}">Giày nữ</a></li>
+                    <li><a href="{{url('/')}}">Giày nam</a></li>
+                    <li><a href="{{url('/')}}">Giới thiệu</a></li>
+                    <li><a href="{{url('/')}}">Liên hệ</a></li>
+                </ul>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">

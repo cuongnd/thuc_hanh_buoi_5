@@ -9,3 +9,26 @@
     width: 600px;
     margin: 50px auto;
 }
+.menu-ngang
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+.menu-ngang li{
+    float: left;
+}
+.menu-ngang li  a{
+    padding: 10px;
+    text-decoration: none;
+}
+.menu-ngang li  a.active{
+ background: #C97626;
+    color: #fff;
+}
+.menu-ngang li  a:hover{
+    background: #C97626;
+    color: #fff;
+    text-decoration: none;
+}
