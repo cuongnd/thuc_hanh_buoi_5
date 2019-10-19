@@ -26,9 +26,9 @@
                     @foreach($bills as $bill)
                         <tr class="odd gradeX" align="center">
                             <td>{{$bill->id}}</td>
-
-                            <td>{{$bill->full_name}}</td>
-                            <td>{{$bill->email}}</td>
+                            <?php $customer = App\Customer::find($bill->customer_id);?>
+                            <td>{{$customer->full_name}}</td>
+                            <td>{{$customer->email}}</td>
 
                             <td>{{$bill->created_at}}
 
