@@ -15,7 +15,6 @@
                         <th>ID</th>
                         <th>Họ tên khách hàng</th>
                         <th>Email</th>
-                        <th>Mã giảm giá</th>
                         <th>Ngày mua</th>
                         <th>Tổng tiền</th>
                         <th>Delete</th>
@@ -28,11 +27,10 @@
                         <tr class="odd gradeX" align="center">
                             <td>{{$bill->id}}</td>
 
-                            <td></td>
-                            <td></td>
-                            <td>
-                            </td>
-                            <td>
+                            <td>{{$bill->full_name}}</td>
+                            <td>{{$bill->email}}</td>
+
+                            <td>{{$bill->created_at}}
 
                             </td>
                             <td>

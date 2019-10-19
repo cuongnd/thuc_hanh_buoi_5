@@ -28,6 +28,8 @@ Route::post('dang-ky', ['as' => 'dangky', 'uses' => 'PageController@postDangKy']
 Route::get('dang-nhap', ['as' => 'get.login', 'uses' => 'PageController@getLogin']);
 
 Route::post('dang-nhap', ['as' => 'post.login', 'uses' => 'PageController@postLogin']);
+Route::get('thanh-toan', ['as' => 'thanhtoan', 'uses' => 'PageController@getShowCheckout']);
+Route::post('thanh-toan', ['as' => 'thanhtoan', 'uses' => 'PageController@postCheckout']);
 
 
 
