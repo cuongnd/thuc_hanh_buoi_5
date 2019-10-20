@@ -55,7 +55,7 @@ class AjaxController extends Controller
 
         $response=new \stdClass();
         $response->result="success";
-        $response->data=[];
+        $response->data=[$product_data];
         echo json_encode($response);
 
 
@@ -65,7 +65,7 @@ class AjaxController extends Controller
         $coupon_name = $request->coupon;
         $valid = array('success' => false, 'messages' => array());
         $coupon = Coupon::where('name',$coupon_name)->get()->first();
-        
+
         if(count($coupon) > 0)
         {
             $value             = $coupon->value;
@@ -76,7 +76,7 @@ class AjaxController extends Controller
             $total_price       = $subtotal - $total_down;
             $valid['success']  = true;
             $valid['messages'] = 'Nhập coupon thành công';
-            
+
             $total_down = number_format($total_down);
             $total_price_raw = $total_price;
             $total_price = number_format($total_price);
@@ -96,7 +96,7 @@ class AjaxController extends Controller
             )
         );
     }
-    
+
     public function postAjaxRemoveProduct(Request $request){
         $rowId = $request->rowId;
         foreach(Cart::content() as $cart)
@@ -108,9 +108,9 @@ class AjaxController extends Controller
             }else{
                 echo "false";
             }
-        } 
+        }
     }
-    
+
     public function postAjaxXulyQuantity(Request $request)
     {
         $rowId = $request->rowId;
@@ -128,7 +128,7 @@ class AjaxController extends Controller
         // //lấy số lượng sản phẩm có trong giỏ hàng
         $product_per = ProductProperties::where('product_id',$product_id)->where('size_id',$size_id)->select('quantity')->get()->first();
         $p_quantity = $product_per->quantity;
-        
+
         $valid = array('success' => false, 'messages' => array());
 
          if($quantity > $p_quantity)
@@ -143,7 +143,7 @@ class AjaxController extends Controller
                 )
             );
         }else{
-          
+
             Cart::update($rowId, $quantity);
              foreach(Cart::content() as $row)
             {
@@ -156,7 +156,7 @@ class AjaxController extends Controller
             $valid['success'] = true;
             $valid['messages'] = "Thành công";
             $total_price = Cart::subtotal(0,".",",");
-            
+
             echo json_encode(
                 array(
                 "rowId" => "$rowId",
@@ -169,12 +169,12 @@ class AjaxController extends Controller
     }
 
     public function postAjaxFilterPaginate(Request $request)
-    {   
+    {
         $cate_id = $request->cate_id;
         $brand_list = $request->brand_list;
         $size_list = $request->size_list;
         $price_list = $request->price_list;
-        
+
         $brands = null;
         $sizes = null;
         $itemsOnPage = $request->itemsOnPage;
@@ -239,7 +239,7 @@ class AjaxController extends Controller
         $selectRaw = '*, case when promotion_price > 0 then promotion_price else unit_price end as price';
 
         $products = Product::selectRaw($selectRaw)->whereRaw("cate_id = $cate_id".$filter)->orderByRaw($sort)->paginate($itemsOnPage);
-        
+
         //response ajax
         return view('ajax_result.block_product',compact('products','brands','sizes','price_list'));
     }
@@ -256,7 +256,7 @@ class AjaxController extends Controller
         $password = $request->txtPassword;
         $valid = array('success' => false, 'messages' =>array());
         if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])) {
-            $valid['success'] = true; 
+            $valid['success'] = true;
             $valid['messages'] = 'Đăng nhập thành công';
         }else{
             $valid['success'] = false;
@@ -269,7 +269,7 @@ class AjaxController extends Controller
             )
         );
     }
-    
+
     public function postAjaxShowBills(Request $request)
     {
         $bill_id = $request->bill_id;
@@ -279,7 +279,7 @@ class AjaxController extends Controller
         $bill_detail = $bills->billdetail;
 
         $customer = Customer::find($bills->customer_id);
-      
+
         return view('ajax_result.block_list_bill',compact('bills','bill_detail','customer'));
     }
 }

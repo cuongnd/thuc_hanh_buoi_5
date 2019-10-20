@@ -46,7 +46,8 @@
                                 Cart <span class="label label-success">0</span></a>
                             <div class="dropdown-menu wrapper-content-cart-dropdown">
                                 <div class="wrapper-content-cart">
-                                    hello dropdown-menu
+                                    <ul class="list-cart">
+                                    </ul>
                                 </div>
                             </div>
                         </li>

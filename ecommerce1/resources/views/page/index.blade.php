@@ -65,6 +65,19 @@
                     success: function(response)
                     {
                         if(response.result==="success"){
+                            var product=response.data[0];
+                            var $html_item_product_cart=$(`
+                                    <li>
+                                            <div class="row">
+                                                <div class="col-sm-3"><img src=""></div>
+                                                <div class="col-sm-9">
+                                                    <h4>${product.name}</h4>
+                                                    ${product.price}*${product.qty} vnđ
+                                                </div>
+                                            </div>
+                                        </li>
+                                `);
+                            $html_item_product_cart.appendTo($('.wrapper-content-cart ul.list-cart'));
                             alert('da them thanh cong');
                         }
                     }
