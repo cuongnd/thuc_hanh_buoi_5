@@ -66,8 +66,10 @@
                     {
                         if(response.result==="success"){
                             var product=response.data[0];
+
+                            $('.empty-cart').remove();
                             var $html_item_product_cart=$(`
-                                    <li>
+                                    <li data-product_id="${product.id}">
                                             <div class="row">
                                                 <div class="col-sm-3"><img src=""></div>
                                                 <div class="col-sm-9">
@@ -78,6 +80,7 @@
                                         </li>
                                 `);
                             $html_item_product_cart.appendTo($('.wrapper-content-cart ul.list-cart'));
+                            $('.total-item').html($('.list-cart').find('li').length);
                             alert('da them thanh cong');
                         }
                     }

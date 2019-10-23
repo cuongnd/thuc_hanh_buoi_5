@@ -40,8 +40,12 @@
     position: relative;
 }
 .wrapper-content-cart-dropdown{
-    border-radius: 0;
-    width: 400px;
+    width: 300px;
+    left: 11px;
+    border-radius: 6px;
+    box-shadow: none;
+    min-height: 76px;
+    top: 29px;
 }
 .wrapper-content-cart{
     padding: 10px;
@@ -61,4 +65,19 @@
     background: #C97626;
     color: #fff;
     text-decoration: none;
+}
+
+.list-cart {
+    padding: 0;
+    margin: 3px 0;
+    float: none;
+    list-style: none;
+}
+.list-cart li{
+    padding: 0;
+    margin: 0;
+    float: none;
+}
+.list-cart li .product-image{
+    width: 100%;
 }
