@@ -8,7 +8,7 @@ class UserController{
         );
         $user_model=$this->getModel('user');
         if($user=$user_model->post_login($data)){
-            header("location:index.php");
+            header("location:index.php?view=index&layout=index");
         }
 
 

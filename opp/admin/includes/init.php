@@ -17,6 +17,8 @@ $disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $por
 $url = "${protocol}://${domain}${disp_port}/$script_name/";
 define("ADMIN_PATH_WEB",$url);
 $controller=isset($_GET['controller'])?$_GET['controller']:'index';
+
+
 $task=isset($_GET['task'])?$_GET['task']:'index';
 
 require_once ADMIN_PATH_ROOT."/includes/framework.php";
@@ -31,5 +33,6 @@ if(file_exists(ADMIN_PATH_ROOT.$controller_path)) {
         call_user_func(array($class_controller, $method_name));
     }
 }
+$content=ob_get_clean();
 
 ?>

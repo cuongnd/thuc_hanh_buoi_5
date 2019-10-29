@@ -11,30 +11,43 @@ require_once "includes/init.php";
 <?php if($controller!=="user" && $task!="login"&&!UserModel::check_login()){
     header("location:index.php?controller=user&task=login");
 } ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="view-login">
-                    <form action="index.php?controller=user&task=post_login" method="post">
-                        <table class="table table-bordered ">
-                            <tr>
-                                <th>Username</th>
-                                <td><input class="form-control" type="text" name="username"></td>
-                            </tr>
-                            <tr>
-                                <th>Password</th>
-                                <td><input class="form-control" type="password" name="password"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <button class="btn btn-primary">Login</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
+    <?php if($controller=="user" && $task=="login") { ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="view-login">
+                        <form action="index.php?controller=user&task=post_login" method="post">
+                            <table class="table table-bordered ">
+                                <tr>
+                                    <th>Username</th>
+                                    <td><input class="form-control" type="text" name="username"></td>
+                                </tr>
+                                <tr>
+                                    <th>Password</th>
+                                    <td><input class="form-control" type="password" name="password"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <button class="btn btn-primary">Login</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php }else{ ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <?php
+                    echo $content;
+                    ?>
+                </div>
+            </div>
+        </div>
+
+    <?php } ?>
 </body>
 </html>
