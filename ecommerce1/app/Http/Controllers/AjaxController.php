@@ -27,6 +27,7 @@ class AjaxController extends Controller
         $product = Product::find($product_id);
 
         $count = Cart::count();
+
         $product_data=[
             'id' => $product_id,
             'name' => $product->name,

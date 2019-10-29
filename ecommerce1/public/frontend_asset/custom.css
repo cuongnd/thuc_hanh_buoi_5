@@ -81,3 +81,8 @@
 .list-cart li .product-image{
     width: 100%;
 }
+
+.view-category,.view-detail
+{
+    margin-top: 20px;
+}

@@ -14,12 +14,15 @@
     <link href="{{url('/')}}/frontend_asset/custom.css" rel="stylesheet">
 
 
+
     <!-- Custom Fonts -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <!-- /#wrapper -->
-
+<script type="text/javascript">
+    var _token="{{ csrf_token() }}",root_url="{{url('/')}}";
+</script>
 <!-- jQuery -->
 <script src="{{url('/')}}/frontend_asset/jquery/dist/jquery.min.js"></script>
 
@@ -28,7 +31,7 @@
 
 
 <script src="{{url('/')}}/frontend_asset/ckeditor/ckeditor.js"></script>
-
+<script src="{{url('/')}}/frontend_asset/custom.js"></script>
 
 <body>
 <div class="container">
@@ -65,12 +68,13 @@
                                                 <div class="col-sm-3"><img class="product-image" src="{{url('/')}}/frontend_asset/images/no-image.jpeg"></div>
                                                 <div class="col-sm-9">
                                                     <div><b>{{$cart->name}}</b></div>
-                                                    {{$cart->price}}*{{$cart->qty}} vnđ
+                                                    {{$cart->price}} * <span class="cart-quality">{{$cart->qty}}</span> vnđ
                                                 </div>
                                             </div>
                                         </li>
                                     @endforeach
                                 </ul>
+                                <div><a href="{{url('/')}}/gio-hang">Giỏ hàng</a></div>
             </div>
         </div>
         </li>
@@ -85,8 +89,8 @@
         <div class="col-md-12">
             <ul class="menu-ngang">
                 <li><a class="active" href="{{url('/')}}">Trang chủ</a></li>
-                <li><a href="{{url('/')}}">Giày nữ</a></li>
-                <li><a href="{{url('/')}}">Giày nam</a></li>
+                <li><a href="{{url('/')}}/danh-muc/8">Giày nữ</a></li>
+                <li><a href="{{url('/')}}/danh-muc/9">Giày nam</a></li>
                 <li><a href="{{url('/')}}">Giới thiệu</a></li>
                 <li><a href="{{url('/')}}">Liên hệ</a></li>
             </ul>

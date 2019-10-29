@@ -6,7 +6,7 @@
         @foreach($new_product as $product)
             <div class="col-md-4">
                 <div class="product">
-                    <h3>{{$product->name}}</h3>
+                    <h3><a href="{{url('/')}}/san-pham/{{$product->id}}">{{$product->name}}</a></h3>
                     Price:{{$product->price}}
                     <div class="wrapper-content-add-to-cart">
                         <select class="form-control pull-left"  name="quality">
@@ -26,7 +26,7 @@
         @foreach($sale_product as $product)
             <div class="col-md-4">
                 <div class="product">
-                    <h3>{{$product->name}}</h3>
+                    <h3><a href="{{url('/')}}/san-pham/{{$product->id}}">{{$product->name}}</a></h3>
                     Price:{{$product->price}}
                     <div class="wrapper-content-add-to-cart">
                         <select class="form-control pull-left"  name="quality">
@@ -40,52 +40,5 @@
             </div>
         @endforeach
     </div>
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $('.btn-add-cart').click(function (e) {
-                var $wrapper_content_cart=$(this).closest('.wrapper-content-add-to-cart');
-                var quality=$wrapper_content_cart.find('select[name="quality"]').val();
-                var product_id=$(this).data("product_id");
-                var data_post={
-                    "_token": "{{ csrf_token() }}",
-                    "product_id":product_id,
-                    "quality":quality,
 
-                };
-                $.ajax({
-                    url: "{{url('/')}}/ajax/add-to-cart",
-                    type: "post",
-                    dataType: 'json',
-                    data: data_post,
-                    async: true,
-                    beforeSend: function()
-                    {
-
-                    },
-                    success: function(response)
-                    {
-                        if(response.result==="success"){
-                            var product=response.data[0];
-
-                            $('.empty-cart').remove();
-                            var $html_item_product_cart=$(`
-                                    <li data-product_id="${product.id}">
-                                            <div class="row">
-                                                <div class="col-sm-3"><img src=""></div>
-                                                <div class="col-sm-9">
-                                                    <h4>${product.name}</h4>
-                                                    ${product.price}*${product.qty} vnđ
-                                                </div>
-                                            </div>
-                                        </li>
-                                `);
-                            $html_item_product_cart.appendTo($('.wrapper-content-cart ul.list-cart'));
-                            $('.total-item').html($('.list-cart').find('li').length);
-                            alert('da them thanh cong');
-                        }
-                    }
-                });
-            });
-        });
-    </script>
 @endsection

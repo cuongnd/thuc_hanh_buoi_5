@@ -62,52 +62,17 @@ class PageController extends Controller
         return "hell0 33333333";
     }
     public function getCategory($id, Request $request)
-    {
-        $cate = Category::find($id);
-        if(!empty($cate)){
-            // lay cac cate con cua cate_hientai
-            $cates_child = Category::where('parent_id',$id)->get();
-            // kiem tra ton tai cate cha khong
-            $cate_parent = Category::find($cate->parent_id);
-            $brands = Brand::all();
-            $sizes = Size::all();
-            $cate_id = $id;
-            $selectRaw = '*, case when promotion_price > 0 then promotion_price else unit_price end as price';
-            if(count($cates_child) > 0 )
-            {
-                $children_id = null;
-                foreach($cates_child as $cate_c)
-                {
-                    $children_id[] = $cate_c->id;
+    {   $id=$request->id;
+        $list_new_product = Product::where('new',1)->select('id','name','slug_name','price','image_product','unit_price','promotion_price','new')->where('category_id',$id)->limit(5)->orderBy('id','desc')->get();
 
-                }
-                //nếu là cate cha thi wherein id cate con, va cha
-                $children =  implode(',',$children_id);
-                $products = Product::whereIn('cate_id',[$id,$children])->select(DB::raw($selectRaw))->orderBy('price','ASC')->paginate(8);
 
-            }else{
-                $products = Product::where('cate_id',$id)->select(DB::raw($selectRaw))->orderBy('price','ASC')->paginate(8);
-            }
-            if(!empty($cate_parent)){
-                return view('page.category',compact('products','cate','cate_id','brands','sizes','cate_parent'));
-            }
-            return view('page.category',compact('products','cate','cate_id','brands','sizes'));
-        } else {
-            return redirect(route('trang-chu'));
-        }
+        return view('page.category',compact('list_new_product'));
     }
     public function getDetailProduct($id)
     {
         $product        = Product::find($id);
-        $cate_id        = $product->cate_id;
-        $cates          = Category::find($cate_id);
-        //lay cate cha
-        $cates_parent   = Category::find($cates->parent_id);
 
-        $diff_products = Product::where('cate_id',$cate_id)->where('id',"<>",$id)->limit(4)->get();
-        $image_products = ImageProduct::where('product_id', $id)->get();
-
-        return view('page.detail',compact('product','image_products','cate_id','cates','cates_parent','diff_products'));
+        return view('page.detail',compact('product'));
 
     }
 

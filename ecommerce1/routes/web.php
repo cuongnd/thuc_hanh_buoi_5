@@ -31,6 +31,9 @@ Route::post('dang-nhap', ['as' => 'post.login', 'uses' => 'PageController@postLo
 Route::get('thanh-toan', ['as' => 'thanhtoan', 'uses' => 'PageController@getShowCheckout']);
 Route::post('thanh-toan', ['as' => 'thanhtoan', 'uses' => 'PageController@postCheckout']);
 
+//danh muc san pham
+Route::get('danh-muc/{id}', ['as' => 'chuyen-muc', 'uses' => 'PageController@getCategory']);
+Route::get('san-pham/{id}', ['as' => 'san-pham', 'uses' => 'PageController@getDetailProduct']);
 
 
 //show form insert data
