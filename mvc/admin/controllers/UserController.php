@@ -1,14 +1,23 @@
 <?php
-class UserController{
+class UserController extends Controller {
     public function login(){
        self::view("user/login");
     }
         public function register(){
-        echo "hello UserController register";
-        die;
+            self::view("user/register");
     }
-    public function view($layout){
-        if(file_exists(ADMIN_PATH_ROOT."/views/$layout.php"))
-            include_once ADMIN_PATH_ROOT."/views/$layout.php";
+
+    public function post_login(){
+        $userModel=self::getModel('user');
+        $data=array(
+            'user_name'=>isset($_POST['user_name'])?$_POST['user_name']:'',
+            'password'=>isset($_POST['password'])?$_POST['password']:''
+        );
+        if($userModel->post_login($data)){
+            header("location:index.php?controller=index&task=index");
+        }else{
+            $msg="Lỗi đăng nhập";
+            header("location:index.php?controller=user&&task=login&error_type=danger&msg=".$msg);
+        }
     }
 }

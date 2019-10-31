@@ -1,4 +1,6 @@
 <?php
+session_start();
+define("ROOT",str_replace("/admin","",ADMIN_PATH_ROOT));
 
 // server protocol
 $protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
@@ -14,4 +16,5 @@ $disp_port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $por
 // put em all together to get the complete base URL
 $url = "${protocol}://${domain}${disp_port}/$script_name/";
 define("ADMIN_PATH_WEB",$url);
+require_once ROOT."/lib/db/db.php";
 require_once ADMIN_PATH_ROOT."/includes/framwork.php";

@@ -1,5 +1,5 @@
 <?php
-class DB{
+class db{
     /*
      * kết nối tới cơ sở dữ liệu
      */
