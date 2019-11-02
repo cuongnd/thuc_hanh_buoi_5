@@ -22,6 +22,7 @@ $controller=isset($_GET['controller'])?$_GET['controller']:'index';
 $task=isset($_GET['task'])?$_GET['task']:'index';
 
 require_once ADMIN_PATH_ROOT."/includes/framework.php";
+require_once ADMIN_PATH_ROOT."/controllers/Controller.php";
 $controller_path="/controllers/$controller.php";
 
 if(file_exists(ADMIN_PATH_ROOT.$controller_path)) {
@@ -30,9 +31,10 @@ if(file_exists(ADMIN_PATH_ROOT.$controller_path)) {
     if(method_exists($controller."Controller",$method_name)){
         $class_controller=$controller."Controller";
         $class_controller=new $class_controller();
+
         call_user_func(array($class_controller, $method_name));
     }
 }
-$content=ob_get_clean();
+
 
 ?>
