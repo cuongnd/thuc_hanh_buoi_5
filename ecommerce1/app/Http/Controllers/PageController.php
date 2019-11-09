@@ -49,9 +49,9 @@ class PageController extends Controller
     }
     public function getIndexPage()
     {
-    	$new_product = Product::where('new',1)->select('id','name','slug_name','price','image_product','unit_price','promotion_price','new')->limit(5)->orderBy('id','desc')->get();
+    	$new_product = Product::where('is_new',1)->select('id','product_name','slug_name','price','image_product','unit_price','sale_price','is_new')->limit(5)->orderBy('id','desc')->get();
 
-        $sale_product = Product::where('promotion_price','>',0)->select('id','name','slug_name','price','image_product','unit_price','promotion_price','new')->limit(5)->orderBy('id','desc')->get();
+        $sale_product = Product::where('sale_price','>',0)->select('id','product_name','slug_name','price','image_product','unit_price','sale_price','is_new')->limit(5)->orderBy('id','desc')->get();
 
     	return view('page.index',compact('new_product','sale_product'));
     }
@@ -63,7 +63,7 @@ class PageController extends Controller
     }
     public function getCategory($id, Request $request)
     {   $id=$request->id;
-        $list_new_product = Product::where('new',1)->select('id','name','slug_name','price','image_product','unit_price','promotion_price','new')->where('category_id',$id)->limit(5)->orderBy('id','desc')->get();
+        $list_new_product = Product::where('is_new',1)->select('id','name','slug_name','price','image_product','unit_price','promotion_price','is_new')->where('category_id',$id)->limit(5)->orderBy('id','desc')->get();
 
 
         return view('page.category',compact('list_new_product'));
