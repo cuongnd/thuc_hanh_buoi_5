@@ -4,3 +4,11 @@
     margin: 150px auto;
     padding: 10px;
 }
+.view-add-product
+{
+
+}
+.view-add-product .image_product
+{
+    width: 150px;
+}

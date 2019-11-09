@@ -61,7 +61,12 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     });
     Route::group(['prefix'=>'san-pham'],function () {
         Route::get("danh-sach-san-pham",['as'=>'listsanpham','uses'=>'ProductController@getListProduct']);
+        //root/admin/san-pham/them-moi-san-pham
         Route::get("them-moi-san-pham",['as'=>'them-moi-san-pham','uses'=>'ProductController@getAddProduct']);
+        //root/admin/san-pham/edit-product
+        Route::get("edit-product/{id}",['as'=>'edit-product','uses'=>'ProductController@getEditProduct']);
+        //root/admin/san-pham/post-add-product
+        Route::post("post-add-product",['as'=>'post-add-product','uses'=>'ProductController@postAddProduct']);
     });
 
     /*

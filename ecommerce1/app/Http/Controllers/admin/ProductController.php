@@ -19,75 +19,42 @@ class ProductController extends Controller
 {
     public function getAddProduct()
     {
-       
+
     	$cate = Category::all()->toArray();
-        $brands = Brand::all();
-    	$size = Size::all();
-    	return view('admin.product.add_product',compact('cate','size','brands'));
+    	return view('admin.product.add_product',compact('cate'));
     }
 
-    public function postAddProduct(ProductRequest $request)
+    public function postAddProduct(Request $request)
     {
-        $this->validate($request,[
-            "txtName"     => "unique:product,name",
-            "txtHinh"     => "required|image",
-         ],[
-            "txtName.unique"       => "Tên sản phẩm bị trùng",
-            "txtHinh.image"        => "Bạn cần chọn hình ảnh",
-            "txtHinh.required"     => "Bạn chưa chọn hình đại diện",
-        ]);
     	$product = new Product;
-        $product->cate_id         = $request->selectParentId;
-        $product->brand_id        = $request->selectBrandId;
-        $product->name            = $request->txtName;
-        $product->slug_name       = str_slug($request->txtName,"-");
-        $product->meta_name       = unicode_convert_for_regex($request->txtName);
-        $product->description     = $request->txtDescription;
-        $product->detail          = $request->txtDetail;
-        $product->unit_price      = $request->txtUnitPrice;
-        $product->promotion_price = $request->txtPromoPrice; 
-        $product->new             = $request->rdoNew;
+        $product->product_name         = $request->product_name;
+        $product->short_description     = $request->short_description;
+        $product->full_description          = $request->full_description;
+        $product->price      = $request->price;
+        $product->sale_price = $request->sale_price;
+        $product->is_new             = $request->is_new;
         $product->created_at      = new DateTime;
         $allowed = array('image/jpg','image/png','image/jpeg');
-        if($request->hasFile('txtHinh')){
-            $hinh      = $request->file('txtHinh');
-            $ext_image = $hinh->getClientOriginalExtension();
-            $renamed_h = uniqid('_anh',true). "." .$ext_image;
-            if(in_array($hinh->getClientMimeType(),$allowed)){
-                if($hinh->move('uploaded/product',$renamed_h)){
-                $product->image_product   = $renamed_h;
-                }
-            }
-        }
+
         if($product->save()){
-            $max_id = Product::max('id');
-            if($request->hasFile('hinh'))
-            {
-                
-                foreach($request->file('hinh') as $file){
-
-                    $product_image = new ImageProduct;
-                    $ext = $file->getClientOriginalExtension();
-                    $renamed = uniqid('_anh',true). "." .$ext;
-
-                    if(in_array($file->getClientMimeType(),$allowed)){
-                        if($file->move('uploaded/product',$renamed)){
-                            $product_image->name       = $renamed;
-                            $product_image->product_id = $max_id;
-                            $product_image->created_at = new DateTime;
-                            $product_image->save();
-                        }
-                    }
-                }
+            if ($request->hasFile('image_product')) {
+                $file = $request->image_product;
+                $file_name=$file->getClientOriginalName();
+                $extension_file=$file->getClientOriginalExtension();
+                $temp_file=$file->getRealPath();
+                $file_size=$file->getSize();
+                $file_type=$file->getMimeType();
+                $file->move('upload', $file->getClientOriginalName());
+                $product->image_product="upload/".$file->getClientOriginalName();
+                $product->save();
             }
-            
         }
-        return redirect("admin/san-pham/them")->with("message","Thêm sản phẩm thành công");
+        return redirect(route('listsanpham'))->with("message","Thêm sản phẩm thành công");
     }
     public function getListProduct()
     {
         $products = Product::orderBy('id','DESC')->get();
-      
+
         return view('admin.product.list_product',compact('products'));
     }
 
@@ -103,7 +70,7 @@ class ProductController extends Controller
         $sizes = Size::all();
 
         $product = Product::find($id);
-        
+
         return view("admin.product.add_size", compact('sizes','product'));
     }
     public function postAddSize(Request $request, $id)
@@ -113,9 +80,9 @@ class ProductController extends Controller
         ],[
             "txtQuantity.required" => "Bạn chưa nhập số lượng",
             "txtQuantity.numeric"  => "Số lượng phải là số",
-           
+
         ]);
-        
+
         $sizes = ProductProperties::where('product_id',$id)->where("size_id",$request->selectSizeId)->get()->toArray();
         if(count($sizes)>0){
             return redirect("admin/san-pham/size/them/".$id)->with('error','Size đã tồn tại');
@@ -126,9 +93,9 @@ class ProductController extends Controller
             $size->quantity   = $request->txtQuantity;
             $size->save();
 
-            return redirect("admin/san-pham/size/them/".$id)->with('message','Thêm size thành công');     
+            return redirect("admin/san-pham/size/them/".$id)->with('message','Thêm size thành công');
         }
-       
+
     }
     public function postEditProduct(ProductRequest $request, $id){
         if(isset($_POST['ok']))
@@ -148,7 +115,7 @@ class ProductController extends Controller
         $product->description     = $request->txtDescription;
         $product->detail          = $request->txtDetail;
         $product->unit_price      = $request->txtUnitPrice;
-        $product->promotion_price = $request->txtPromoPrice; 
+        $product->promotion_price = $request->txtPromoPrice;
         $product->new             = $request->rdoNew;
         $product->updated_at      = new DateTime;
         $allowed = array('image/jpg','image/png','image/jpeg');
@@ -165,7 +132,7 @@ class ProductController extends Controller
         $product->save();
             if($request->hasFile('hinh'))
             {
-                
+
                 foreach($request->file('hinh') as $file){
 
                     $product_image = new ImageProduct;
@@ -181,9 +148,9 @@ class ProductController extends Controller
                         }
                     }
                 }
-            }  
-            return redirect("admin/san-pham/sua/".$id)->with('message','Sửa thành công');    
-        } 
+            }
+            return redirect("admin/san-pham/sua/".$id)->with('message','Sửa thành công');
+        }
     }
 
     public function getEditImage($id)
@@ -192,7 +159,7 @@ class ProductController extends Controller
 
         return view('admin.product.edit_image',compact('image'));
     }
-   
+
     public function postEditImage($id, Request $request)
     {
 
@@ -215,10 +182,10 @@ class ProductController extends Controller
                         File::delete($image_path);
                     }
                 }else{
-                    return redirect('admin/san-pham/hinh/sua/'.$id)->with('error','Không the upload'); 
+                    return redirect('admin/san-pham/hinh/sua/'.$id)->with('error','Không the upload');
                 }
             }else{
-                return redirect('admin/san-pham/hinh/sua/'.$id)->with('error','Lỗi định dạng file');     
+                return redirect('admin/san-pham/hinh/sua/'.$id)->with('error','Lỗi định dạng file');
             }
         }
         return redirect('admin/san-pham/hinh/sua/'.$id)->with('message','thanh cong');
@@ -241,7 +208,7 @@ class ProductController extends Controller
                 foreach($sizes as $size)
                 {
                     echo  "<tr><td>";
-                    $size_name = Size::find($size->size_id); 
+                    $size_name = Size::find($size->size_id);
                     echo $size_name->name."</td><td>";
                     echo $size->quantity."</td></tr>";
                 }
@@ -272,6 +239,6 @@ class ProductController extends Controller
         //QueryBuilder udpate table
         $quantity = DB::table('product_properties')->where('product_id',$product_id)->where('size_id',$size_id)->update(['quantity'=>$quantity]);
         echo "true";
-    }   
+    }
 
 }
