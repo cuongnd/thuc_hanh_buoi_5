@@ -62,8 +62,7 @@ class ProductController extends Controller
     {
         $cates = Category::all();
         $product = Product::find($id);
-        $brands = Brand::all();
-        return view('admin.product.edit_product',compact('product','cates','brands'));
+        return view('admin.product.edit_product',compact('product','cates'));
     }
     public function getAddSize($id)
     {
@@ -97,60 +96,32 @@ class ProductController extends Controller
         }
 
     }
-    public function postEditProduct(ProductRequest $request, $id){
-        if(isset($_POST['ok']))
-        {
-            $this->validate($request,[
-            "txtName" => "unique:product,name,".$id,
-        ],[
-            "txtName.unique" => "Tên sản phẩm bị trùng",
-        ]);
+    public function postEditProduct(Request $request, $id){
 
         $product = Product::find($id);
-        $product->cate_id         = $request->selectCateID;
-        $product->brand_id        = $request->selectBrandId;
-        $product->name            = $request->txtName;
-        $product->slug_name       = str_slug($request->txtName,"-");
-        $product->meta_name       = unicode_convert_for_regex($request->txtName);
-        $product->description     = $request->txtDescription;
-        $product->detail          = $request->txtDetail;
-        $product->unit_price      = $request->txtUnitPrice;
-        $product->promotion_price = $request->txtPromoPrice;
-        $product->new             = $request->rdoNew;
-        $product->updated_at      = new DateTime;
+        $product->product_name         = $request->product_name;
+        $product->short_description     = $request->short_description;
+        $product->full_description          = $request->full_description;
+        $product->price      = $request->price;
+        $product->sale_price = $request->sale_price;
+        $product->is_new             = $request->is_new;
+        $product->created_at      = new DateTime;
         $allowed = array('image/jpg','image/png','image/jpeg');
-        if($request->hasFile('txtHinh')){
-            $hinh      = $request->file('txtHinh');
-            $ext_image = $hinh->getClientOriginalExtension();
-            $renamed_h = uniqid('_anh',true). "." .$ext_image;
-            if(in_array($hinh->getClientMimeType(), $allowed)){
-                if($hinh->move('uploaded/product',$renamed_h)){
-                $product->image_product   = $renamed_h;
-                }
+
+        if($product->save()){
+            if ($request->hasFile('image_product')) {
+                $file = $request->image_product;
+                $file_name=$file->getClientOriginalName();
+                $extension_file=$file->getClientOriginalExtension();
+                $temp_file=$file->getRealPath();
+                $file_size=$file->getSize();
+                $file_type=$file->getMimeType();
+                $file->move('upload', $file->getClientOriginalName());
+                $product->image_product="upload/".$file->getClientOriginalName();
+                $product->save();
             }
         }
-        $product->save();
-            if($request->hasFile('hinh'))
-            {
-
-                foreach($request->file('hinh') as $file){
-
-                    $product_image = new ImageProduct;
-                    $ext = $file->getClientOriginalExtension();
-                    $renamed = uniqid('_anh',true). "." .$ext;
-
-                    if(in_array($file->getClientMimeType(),$allowed)){
-                        if($file->move('uploaded/product',$renamed)){
-                            $product_image->name       = $renamed;
-                            $product_image->product_id = $id;
-                            $product_image->created_at = new DateTime;
-                            $product_image->save();
-                        }
-                    }
-                }
-            }
-            return redirect("admin/san-pham/sua/".$id)->with('message','Sửa thành công');
-        }
+        return redirect(route('listsanpham'))->with("message","Thêm sản phẩm thành công");
     }
 
     public function getEditImage($id)

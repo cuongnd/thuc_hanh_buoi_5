@@ -65,6 +65,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
         Route::get("them-moi-san-pham",['as'=>'them-moi-san-pham','uses'=>'ProductController@getAddProduct']);
         //root/admin/san-pham/edit-product
         Route::get("edit-product/{id}",['as'=>'edit-product','uses'=>'ProductController@getEditProduct']);
+        //root/admin/san-pham/edit-product/{id}
+        Route::post("edit-product/{id}",['as'=>'post-edit-product','uses'=>'ProductController@postEditProduct']);
         //root/admin/san-pham/post-add-product
         Route::post("post-add-product",['as'=>'post-add-product','uses'=>'ProductController@postAddProduct']);
     });
