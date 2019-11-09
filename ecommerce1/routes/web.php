@@ -61,6 +61,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     });
     Route::group(['prefix'=>'san-pham'],function () {
         Route::get("danh-sach-san-pham",['as'=>'listsanpham','uses'=>'ProductController@getListProduct']);
+        Route::get("them-moi-san-pham",['as'=>'them-moi-san-pham','uses'=>'ProductController@getAddProduct']);
     });
 
     /*
